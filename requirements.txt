@@ -46,3 +46,4 @@ bqplot
 yfiles_jupyter_graphs
 kuzu
 pyvis
+polars
