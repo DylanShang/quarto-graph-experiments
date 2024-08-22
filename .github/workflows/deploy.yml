@@ -29,7 +29,7 @@ jobs:
         with:
           use-public-rspm: true
       - name: Install R packages
-        run: Rscript -e 'install.packages(c("rmarkdown", "knitr", "ggplot2"))'
+        run: Rscript -e 'install.packages(c("rmarkdown", "knitr", "ggplot2", "reticulate"))'
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
