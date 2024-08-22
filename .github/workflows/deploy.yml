@@ -47,7 +47,7 @@ jobs:
           npm view @kuzu/kuzu-wasm dist.tarball | xargs curl -o dist/package.tgz
           tar -xz -C dist -f dist/package.tgz && rm dist/package.tgz
       - name: Render Quarto Project
-        uses: quarto-dev/quarto-actions/render@v2
+        uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
         env:
