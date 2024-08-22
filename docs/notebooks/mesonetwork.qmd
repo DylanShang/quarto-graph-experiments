@@ -11,7 +11,8 @@ format:
   live-html:
     toc: true
 engine: knitr
-execute: 
+execute:
+  eval: false 
   echo: false
 ---
 
