@@ -1,0 +1,70 @@
+project:
+  type: website
+  resources:
+    - "data/**/*"
+  pre-render:
+    - scripts/metadata-scrape.py
+    - scripts/load_data_kuzu.py
+  render:
+    - "*.qmd"
+    - docs/**/*.qmd
+    - docs/**/*.ipynb
+    - "*.ipynb"
+    - "!docs/**/*_.qmd"
+    - "!docs/**_.ipynb"
+execute:
+  warning: false
+  error: false
+  # cache: true
+
+website:
+  title: "Quarto Graph Experiments"
+  open-graph: true
+  site-url: "https://analect.github.io/quarto-graph-experiments"
+  repo-url: "https://github.com/analect/quarto-graph-experiments"
+  repo-actions: [edit, issue]
+  page-navigation: true
+  search:
+    location: navbar
+    type: textbox
+  navbar:
+    background: light
+    logo: ""
+    title: false
+    collapse-below: lg
+    left:
+      - sidebar:demo
+      - sidebar:resources
+    # right:
+    #   - about.qmd
+    #   - icon: gitlab
+    #     href: https://gitlab.xxx.com
+  sidebar:
+    - id: demo
+      title: "Demo"
+      collapse-level: 2
+      style: "docked"
+      align: left
+      contents:
+        - docs/demo/kuzu-use.qmd
+        - docs/demo/old-kuzu-use.ipynb
+    - id: resources
+      title: "Resources"
+      collapse-level: 2
+      style: "docked"
+      align: left
+      contents:
+        - docs/notebooks/Export_Query_Results_to_NetworkX.ipynb
+        - docs/notebooks/General_Kùzu_Demo.ipynb
+        - docs/notebooks/KuzuGraphDemo.ipynb
+        - docs/notebooks/mesonetwork.qmd
+        - docs/notebooks/networks_author.qmd
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    # grid:
+    #   sidebar-width: 350px
+    #   body-width: 700px
+    #   margin-width: 250px

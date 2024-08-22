@@ -1,0 +1,54 @@
+---
+title: "Quarto graph experiment - leveraging Kuzu, PyVis (qmd)"
+subtitle: ""
+description: |
+  * [Source file](https://github.com/analect/quarto-graph-experiments/main/docs/demo/kuzu-use.qmd)
+
+categories: [kuzu, pyvis, quarto]
+author: Analect
+date: 2024-08-22
+format: live-html
+toc: true
+pyodide:
+  packages:
+   - https://cdn.jsdelivr.net/pyodide/v0.26.1/full/decorator-5.1.1-py3-none-any.whl
+#    - https://github.com/joemarshall/pyarrow-pyodide/releases/download/0.26.2/pyarrow-17.0.0-cp312-cp312-pyodide_2024_0_wasm32.whl
+#    - https://joemarshall.github.io/pyarrow-pyodide/releases/0.26.2/pyarrow-17.0.0-cp312-cp312-pyodide_2024_0_wasm32.whl
+execute:
+  freeze: auto
+  eval: false
+code-copy: hover
+editor_options:
+  markdown:
+    wrap: sentence
+    canonical: true
+---
+
+```{pyodide}
+import pyodide_js, pathlib, js
+#await pyodide_js.loadPackage("https://storage.googleapis.com/ibis-wasm-wheels/pyarrow-16.0.0.dev2661%2Bg9bddb87fd-cp311-cp311-emscripten_3_1_46_wasm32.whl")
+await pyodide_js.loadPackage("https://cdn.jsdelivr.net/gh/joemarshall/pyarrow-pyodide@releases/download/0.26.2/pyarrow-17.0.0-cp312-cp312-pyodide_2024_0_wasm32.whl")
+%pip install 'pyarrow'
+```
+
+
+```{pyodide}
+import micropip as mp
+#await mp.install(["pandas", "https://cdn.jsdelivr.net/gh/joemarshall/pyarrow-pyodide@releases/download/0.26.2/pyarrow-17.0.0-cp312-cp312-pyodide_2024_0_wasm32.whl", "yfiles_jupyter_graphs"])
+await mp.install(["pandas", "yfiles_jupyter_graphs"])
+
+#import pyarrow as pa,
+import pandas as pd
+import kuzu_wasm
+from kuzu_wasm.utils import *
+kuzu = await kuzu_wasm.init()
+db = await kuzu.Database("./data/kuzu-test")
+conn = await kuzu.Connection(db)
+```
+
+
+```{pyodide}
+kuzu = await kuzu_wasm.init()
+db = await kuzu.Database("./data/kuzu-test")
+conn = await kuzu.Connection(db)
+```

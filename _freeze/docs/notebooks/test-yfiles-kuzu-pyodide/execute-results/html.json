@@ -1,0 +1,12 @@
+{
+  "hash": "5cd610b5a48bdfd4bfb5128ac7b84bb3",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Test pyodide with  \"\nsubtitle: \"\"\ndescription: |\n  * [r-wasm/quarto-live](https://github.com/r-wasm/quarto-live#readme).\n  * [quarto-live demo site](https://r-wasm.github.io/quarto-live/)\n\ncategories: [quarto, pyodide, yfiles, kuzu]\nauthor: Colum McCoole\ndate: 2024-08-16\nformat: live-html\ntoc: true\npyodide:\n  packages:\n   - https://cdn.jsdelivr.net/pyodide/v0.26.1/full/decorator-5.1.1-py3-none-any.whl\nexecute:\n  freeze: auto\n  eval: false\ncode-copy: hover\neditor_options:\n  markdown:\n    wrap: sentence\n    canonical: true\n---\n\n```{pyodide}\nimport micropip as mp\nawait mp.install(\"pandas\")\n\nimport pandas as pd\n\npd.DataFrame({\n  \"foo\": [\"az\", \"by\", \"cx\", \"dw\"],\n  \"bar\": [3, 14, 15, 92],\n  \"baz\": [True, False, True, None],\n})\n```\n\n```{pyodide}\nimport micropip as mp\nawait mp.install([\"pandas\", \"yfiles_jupyter_graphs\"])\n\nimport pandas as pd\nfrom yfiles_jupyter_graphs import GraphWidget\n\n\n```\n\n```{pyodide}\nawait pyodide.runPythonAsync(`\n    from pyodide.http import pyfetch\n    response = await pyfetch(\"https://github.com/kuzudb/kuzu/archive/refs/tags/v0.5.0.tar.gz\n\") # .zip, .whl, ...\n    await response.unpack_archive() # by\n`)\n\n```\n\n",
+    "supporting": [
+      "test-yfiles-kuzu-pyodide_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
