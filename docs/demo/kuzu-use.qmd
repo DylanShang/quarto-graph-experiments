@@ -14,9 +14,9 @@ pyodide:
    - https://cdn.jsdelivr.net/pyodide/v0.26.1/full/decorator-5.1.1-py3-none-any.whl
 #    - https://github.com/joemarshall/pyarrow-pyodide/releases/download/0.26.2/pyarrow-17.0.0-cp312-cp312-pyodide_2024_0_wasm32.whl
 #    - https://joemarshall.github.io/pyarrow-pyodide/releases/0.26.2/pyarrow-17.0.0-cp312-cp312-pyodide_2024_0_wasm32.whl
-execute:
-  freeze: auto
-  eval: false
+# execute:
+#   freeze: auto
+#   eval: false
 code-copy: hover
 editor_options:
   markdown:
@@ -25,6 +25,47 @@ editor_options:
 ---
 
 ```{pyodide}
+import pyodide_js
+await pyodide_js.loadPackage("https://storage.googleapis.com/ibis-wasm-wheels/pyarrow-16.0.0.dev2661%2Bg9bddb87fd-cp311-cp311-emscripten_3_1_46_wasm32.whl")
+
+import micropip,networkx as nx,pandas as pd,numpy as np,js
+from IPython.display import display, HTML
+await micropip.install(["tzdata","pyvis","kuzu_wasm"])
+import kuzu_wasm
+from kuzu_wasm.utils import *
+
+kuzu = await kuzu_wasm.init("https://kuzu-lab.netlify.app/package/dist/kuzu.js")
+db = await kuzu.Database()
+conn = await kuzu.Connection(db)
+
+kuzu.FS.writeFile("/follows.csv",await (await js.fetch("https://raw.githubusercontent.com/kuzudb/kuzu/master/dataset/demo-db/csv/follows.csv")).text())
+kuzu.FS.writeFile("/city.csv",await (await js.fetch("https://raw.githubusercontent.com/kuzudb/kuzu/master/dataset/demo-db/csv/city.csv")).text())
+kuzu.FS.writeFile("/lives-in.csv",await (await js.fetch("https://raw.githubusercontent.com/kuzudb/kuzu/master/dataset/demo-db/csv/lives-in.csv")).text())
+kuzu.FS.writeFile("/user.csv",await (await js.fetch("https://raw.githubusercontent.com/kuzudb/kuzu/master/dataset/demo-db/csv/user.csv")).text())
+
+await conn.execute("CREATE NODE TABLE User(name STRING, age INT64, PRIMARY KEY (name))")
+await conn.execute("CREATE NODE TABLE City(name STRING, population INT64, PRIMARY KEY (name))")
+await conn.execute("CREATE REL TABLE Follows(FROM User TO User, since INT64)")
+await conn.execute("CREATE REL TABLE LivesIn(FROM User TO City)")
+await conn.execute('COPY User FROM "/user.csv";')
+await conn.execute('COPY City FROM "/city.csv";')
+await conn.execute('COPY Follows FROM "/follows.csv";')
+await conn.execute('COPY LivesIn FROM "/lives_in.csv";')
+res = await conn.execute("MATCH (a:User)-[f:Follows]->(b:User)RETURN a.name, b.name, f.since")
+df = toDf(res)
+df
+
+from pyvis.network import Network
+res_2 = await conn.execute("MATCH (a:User)-[f:Follows]->(b:User)RETURN a,f,b")
+G = toNetworkx(res_2,directed = True)
+g = Network(height="400px",width="500px",notebook=True, cdn_resources='remote',directed = True,neighborhood_highlight = True)
+g.from_nx(G)
+for i in range(len(g.nodes)): g.nodes[i]["label"] = g.nodes[i]["name"]
+html = g.generate_html(notebook=True)
+display(HTML(f'<div style="height:{g.height}">{html}</div>', metadata={"isolated": True}, ))
+```
+
+<!-- ```{pyodide}
 import pyodide_js, pathlib, js
 #await pyodide_js.loadPackage("https://storage.googleapis.com/ibis-wasm-wheels/pyarrow-16.0.0.dev2661%2Bg9bddb87fd-cp311-cp311-emscripten_3_1_46_wasm32.whl")
 await pyodide_js.loadPackage("https://cdn.jsdelivr.net/gh/joemarshall/pyarrow-pyodide@releases/download/0.26.2/pyarrow-17.0.0-cp312-cp312-pyodide_2024_0_wasm32.whl")
@@ -51,4 +92,4 @@ conn = await kuzu.Connection(db)
 kuzu = await kuzu_wasm.init()
 db = await kuzu.Database("./data/kuzu-test")
 conn = await kuzu.Connection(db)
-```
+``` -->
