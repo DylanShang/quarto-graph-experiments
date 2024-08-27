@@ -62,7 +62,7 @@ jobs:
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _site
+          publish_dir: dist
 #           path: docs
 #       - name: Upload Artifact
 #         uses: actions/upload-pages-artifact@v3

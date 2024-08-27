@@ -19,9 +19,9 @@ pyodide:
     - kuzu_wasm==0.0.7
 ---
 
-```{html}
+
 <script src="./../../dist/coi-serviceworker.js"></script>
-```
+
 
 ```{pyodide}
 import networkx as nx,pandas as pd,pyarrow as pa,kuzu_wasm,js
