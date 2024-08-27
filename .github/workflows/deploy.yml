@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
         contents: write
+        pages: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -44,14 +45,14 @@ jobs:
           cp README.md content
           jupyter lite build --contents content --output-dir dist
           cp deploy/netlify.toml dist
-      - name: Download kuzu-wasm
-        run: |
-          npm view @kuzu/kuzu-wasm dist.tarball | xargs curl -o dist/package.tgz
-          tar -xz -C dist -f dist/package.tgz && rm dist/package.tgz
-      - name: Download kuzu-wasm
-        run: |
-          npm view coi-serviceworker dist.tarball | xargs curl -o dist/package.tgz
-          tar -xz -C dist -f dist/package.tgz && rm dist/package.tgz
+      # - name: Download kuzu-wasm
+      #   run: |
+      #     npm view @kuzu/kuzu-wasm dist.tarball | xargs curl -o dist/package.tgz
+      #     tar -xz -C dist -f dist/package.tgz && rm dist/package.tgz
+      # - name: Download kuzu-wasm
+      #   run: |
+      #     npm view coi-serviceworker dist.tarball | xargs curl -o dist/package.tgz
+      #     tar -xz -C dist -f dist/package.tgz && rm dist/package.tgz
       - name: get wheels for public
         run: |
           cp -R deploy/wheels dist    
@@ -61,6 +62,7 @@ jobs:
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _site
 #           path: docs
 #       - name: Upload Artifact
 #         uses: actions/upload-pages-artifact@v3

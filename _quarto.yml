@@ -2,6 +2,7 @@ project:
   type: website
   resources:
     - "data/**/*"
+    - "dist/**/*"
   pre-render:
     - scripts/metadata-scrape.py
     - scripts/load_data_kuzu.py
