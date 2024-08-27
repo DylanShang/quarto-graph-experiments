@@ -1,5 +1,9 @@
-import js
-async def init(wasmUrl="https://kuzu-lab.netlify.app/package/dist/kuzu.js") -> object:
+__version__ = "0.0.7"
+async def init(wasmUrl=None) -> object:
+    import js
+    if wasmUrl is None:
+        rootUrl = js.location.origin
+        wasmUrl = f"{rootUrl}/package/dist/kuzu.js"
     js_function = js.Function('obj', f'''
         async function connectKuzu() {{
                 const wasmUrl = `{wasmUrl}`;
@@ -31,7 +35,7 @@ async def init(wasmUrl="https://kuzu-lab.netlify.app/package/dist/kuzu.js") -> o
                 kuzu.FS.writeFile(target_filepath, content);
                 return target_filepath
         except FileNotFoundError:
-            print(f"Error: The file '{file_path}' was not found.")
+            print(f"Error: The file '{file_path)}' was not found.")
             return False
         except IOError:
             print(f"Error: An I/O error occurred while reading the file '{file_path}'.")

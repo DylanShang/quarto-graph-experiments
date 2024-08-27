@@ -46,6 +46,7 @@ website:
       style: "docked"
       align: left
       contents:
+        - docs/demo/kuzu-quarto-live.qmd
         - docs/demo/kuzu-use.qmd
         - docs/demo/kuzu-use-repl.qmd
         - docs/demo/old-kuzu-use.ipynb
