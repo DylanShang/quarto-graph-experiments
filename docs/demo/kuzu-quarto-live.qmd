@@ -15,12 +15,12 @@ pyodide:
     - networkx
     - pyvis
     - pyodide_unix_timezones
-    - https://kuzu-lab.netlify.app/wheels/pyarrow-17.0.0-cp312-cp312-pyodide_2024_0_wasm32.whl
+    - https://analect.github.io/quarto-graph-experiments/package/wheels/pyarrow-17.0.0-cp312-cp312-pyodide_2024_0_wasm32.whl
     - kuzu_wasm==0.0.7
 ---
 
 
-<script src="./../../dist/coi-serviceworker.js"></script>
+<script src="/coi-serviceworker.min.js"></script>
 
 
 ```{pyodide}
