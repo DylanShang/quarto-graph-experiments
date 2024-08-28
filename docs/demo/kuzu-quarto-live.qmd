@@ -9,7 +9,7 @@ author: "[DylanShang](https://github.com/DylanShang)"
 date: 2024-08-22
 format: live-html
 resources:
-  - "data"
+  - "./../../data"
 pyodide:
   packages:
     - numpy
@@ -27,8 +27,8 @@ pyodide:
 ```{pyodide}
 from os import listdir
 import pandas as pd
-print(listdir("data"))
-pd.read_csv('data/core_meta-data.csv')
+print(listdir("../../data"))
+pd.read_csv('../../data/core_meta-data.csv')
 ```
 
 
