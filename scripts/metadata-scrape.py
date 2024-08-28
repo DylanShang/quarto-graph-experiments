@@ -149,48 +149,118 @@ def generate_csv(file_paths):
 
     
     # Write the core_meta-data CSV file
-    with open(f'{DATA_PATH}/core_meta-data.csv', 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerows(csv_rows)
+    if not os.path.exists(f'{DATA_PATH}/core_meta-data.csv'):
+        try:
+            with open(f'{DATA_PATH}/core_meta-data.csv', 'x', newline='') as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerows(csv_rows)
+        except FileExistsError:
+        # The file was created by another process after the existence check
+            pass
+    else:
+        with open(f'{DATA_PATH}/core_meta-data.csv', 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerows(csv_rows)
 
     # Write the categories_meta-data CSV file
-    with open(f'{DATA_PATH}/categories_meta-data.csv', 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerows(category_csv_rows)
-
+    if not os.path.exists(f'{DATA_PATH}/categories_meta-data.csv'):
+        try:
+            with open(f'{DATA_PATH}/categories_meta-data.csv', 'x', newline='') as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerows(category_csv_rows)
+        except FileExistsError:
+        # The file was created by another process after the existence check
+            pass
+    else:
+        with open(f'{DATA_PATH}/categories_meta-data.csv', 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerows(category_csv_rows)
+    
     # Write the author_meta-data CSV file
-    with open(f'{DATA_PATH}/author_meta-data.csv', 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerows(author_csv_rows)
-
+    if not os.path.exists(f'{DATA_PATH}/author_meta-data.csv'):
+        try:
+            with open(f'{DATA_PATH}/author_meta-data.csv', 'x', newline='') as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerows(author_csv_rows)
+        except FileExistsError:
+        # The file was created by another process after the existence check
+            pass
+    else:
+        with open(f'{DATA_PATH}/author_meta-data.csv', 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerows(author_csv_rows)
+    
     # Write the source_meta-data CSV file
-    with open(f'{DATA_PATH}/source_meta-data.csv', 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerows(source_csv_rows)
+    if not os.path.exists(f'{DATA_PATH}/source_meta-data.csv'):
+        try:
+            with open(f'{DATA_PATH}/source_meta-data.csv', 'x', newline='') as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerows(source_csv_rows)
+        except FileExistsError:
+        # The file was created by another process after the existence check
+            pass
+    else:
+        with open(f'{DATA_PATH}/source_meta-data.csv', 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerows(source_csv_rows)
 
     # Write the unique values to separate CSV files
-    with open(f'{DATA_PATH}/unique_categories.csv', 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(['Category'])
-        for category in unique_categories:
-            writer.writerow([category])
+    if not os.path.exists(f'{DATA_PATH}/unique_categories.csv'):
+        try:
+            with open(f'{DATA_PATH}/unique_categories.csv', 'x', newline='') as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerow(['Category'])
+                for category in unique_categories:
+                    writer.writerow([category])
+        except FileExistsError:
+        # The file was created by another process after the existence check
+            pass
+    else:
+        with open(f'{DATA_PATH}/unique_categories.csv', 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(['Category'])
+            for category in unique_categories:
+                writer.writerow([category])
+
 
     # Write the unique values to separate CSV files
-    with open(f'{DATA_PATH}/unique_author.csv', 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(['Author'])
-        for author in unique_authors:
-            if author:
-                writer.writerow([author])
+    if not os.path.exists(f'{DATA_PATH}/unique_author.csv'):
+        try:
+            with open(f'{DATA_PATH}/unique_author.csv', 'x', newline='') as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerow(['Author'])
+                for author in unique_authors:
+                    if author:
+                        writer.writerow([author])
+        except FileExistsError:
+        # The file was created by another process after the existence check
+            pass
+    else:
+        with open(f'{DATA_PATH}/unique_author.csv', 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(['Author'])
+            for author in unique_authors:
+                if author:
+                    writer.writerow([author])
+
 
     # Write the unique values to separate CSV files
-    with open(f'{DATA_PATH}/unique_source.csv', 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(['LinkURL'])
-        # writer.writerow(['LinkURL', 'LinkName'])
-        for source in unique_sources:
-            writer.writerow([source])
-            # writer.writerow([source[0], source[1]])
+    if not os.path.exists(f'{DATA_PATH}/unique_source.csv'):
+        try:
+            with open(f'{DATA_PATH}/unique_source.csv', 'x', newline='') as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerow(['LinkURL'])
+                for source in unique_sources:
+                    writer.writerow([source])
+        except FileExistsError:
+        # The file was created by another process after the existence check
+            pass
+    else:
+        with open(f'{DATA_PATH}/unique_source.csv', 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(['LinkURL'])
+            for source in unique_sources:
+                writer.writerow([source])
 
     
 # Usage
