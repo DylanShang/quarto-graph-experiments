@@ -2,7 +2,8 @@ project:
   type: website
   resources:
     - "data/**/*"
-    - "dist/**/*"
+    - "package/**/*"
+    - "coi-serviceworker.min.js"
   pre-render:
     - scripts/metadata-scrape.py
     - scripts/load_data_kuzu.py
