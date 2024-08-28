@@ -9,8 +9,10 @@ author: "[DylanShang](https://github.com/DylanShang)"
 date: 2024-08-22
 format: live-html
 resources:
-  - "./../../data"
+  - "../../data"
 pyodide:
+  resources:
+    - "../../data"
   packages:
     - numpy
     - pandas
@@ -25,14 +27,22 @@ pyodide:
 <script src="/coi-serviceworker.min.js"></script>
 
 ```{pyodide}
+#| autorun: false
+#| completion: true
+
 from os import listdir
 import pandas as pd
 print(listdir("../../data"))
 pd.read_csv('../../data/core_meta-data.csv')
+#https://raw.githubusercontent.com/analect/quarto-graph-experiments/gh-pages/data/author_meta-data.csv
 ```
 
+Generate self-contained graph
 
 ```{pyodide}
+#| autorun: false
+#| completion: true
+
 import networkx as nx,pandas as pd,pyarrow as pa,kuzu_wasm,js
 from pyvis.network import Network
 from kuzu_wasm.utils import *
@@ -60,6 +70,36 @@ await conn.execute('COPY LivesIn FROM "/lives_in.csv";')
 
 #cypher query
 res = await conn.execute("MATCH (a:User)-[f:Follows]->(b:User)RETURN a,f,b")
+
+# display the graph
+G = toNetworkx(res,directed = True)
+g = Network(height="480px",notebook=True, cdn_resources='remote',directed = True,neighborhood_highlight = True)
+g.from_nx(G)
+
+# change the display name
+for i in range(len(g.nodes)): g.nodes[i]["label"] = g.nodes[i]["name"]
+
+def display(g, width="100%", height="500px"): print(f'<iframe srcdoc="{g.generate_html(notebook=True).replace(chr(34), "&quot;").replace(chr(39), "&#39;")}" style="width: {width}; height: {height}; border: none;"></iframe>')
+display(g)
+```
+
+Connect to a pre-existing `kuzu-test` database
+
+```{pyodide}
+#| autorun: false
+#| completion: true
+
+import networkx as nx,pandas as pd,pyarrow as pa,kuzu_wasm,js
+from pyvis.network import Network
+from kuzu_wasm.utils import *
+
+# init Kuzu database
+kuzu = await kuzu_wasm.init("https://analect.github.io/quarto-graph-experiments/package/kuzu-wasm/kuzu.js")
+db = await kuzu.Database("../../data/kuzu-test")
+conn = await kuzu.Connection(db)
+
+#cypher query
+res = await conn.execute("MATCH (a:Document)-[f:authored_by]->(b:Author) RETURN a.Title,f,b.Author;")
 
 # display the graph
 G = toNetworkx(res,directed = True)
