@@ -8,6 +8,8 @@ categories: [kuzu, pyvis, quarto]
 author: "[DylanShang](https://github.com/DylanShang)"
 date: 2024-08-22
 format: live-html
+resources:
+  - "data"
 pyodide:
   packages:
     - numpy
@@ -21,6 +23,13 @@ pyodide:
 
 
 <script src="/coi-serviceworker.min.js"></script>
+
+```{pyodide}
+from os import listdir
+import pandas as pd
+print(listdir("data"))
+pd.read_csv('data/core_meta-data.csv')
+```
 
 
 ```{pyodide}
