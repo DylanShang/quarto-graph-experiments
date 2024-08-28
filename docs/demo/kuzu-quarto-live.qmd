@@ -29,7 +29,7 @@ from pyvis.network import Network
 from kuzu_wasm.utils import *
 
 # init Kuzu database
-kuzu = await kuzu_wasm.init()
+kuzu = await kuzu_wasm.init("https://analect.github.io/quarto-graph-experiments/package/kuzu-wasm/kuzu.js")
 db = await kuzu.Database()
 conn = await kuzu.Connection(db)
 
