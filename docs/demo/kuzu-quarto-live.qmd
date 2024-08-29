@@ -2,17 +2,17 @@
 title: "Quarto graph experiment - DylanShang version"
 subtitle: ""
 description: |
-  * [Source file](https://github.com/DylanShang/kuzu-lab/blob/main/examples/Quarto/quarto-live.qmd)
+  * [Source file](https://github.com/Analect/quarto-graph-experiments/blob/main/docs/demo/kuzu-quarto-live.qmd)
 
 categories: [kuzu, pyvis, quarto]
-author: "[DylanShang](https://github.com/DylanShang)"
+author: ""
 date: 2024-08-22
 format: live-html
-# resources:
-#   - "../../data"
+resources:
+  - "/data"
 pyodide:
-  # resources:
-  #   - "../../data"
+  resources:
+    - "/data"
   packages:
     - numpy
     - pandas
