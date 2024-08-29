@@ -9,10 +9,10 @@ author: ""
 date: 2024-08-22
 format: live-html
 resources:
-  - "/data"
+  - "../../data/"
 pyodide:
   resources:
-    - "/data"
+    - "../../data/"
   packages:
     - numpy
     - pandas
