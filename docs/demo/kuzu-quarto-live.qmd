@@ -5,7 +5,7 @@ description: |
   * [Source file](https://github.com/Analect/quarto-graph-experiments/blob/main/docs/demo/kuzu-quarto-live.qmd)
 
 categories: [kuzu, pyvis, quarto]
-author: ""
+author: "Analect"
 date: 2024-08-22
 format: live-html
 resources:
