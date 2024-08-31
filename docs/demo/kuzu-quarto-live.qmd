@@ -24,19 +24,49 @@ pyodide:
 
 <script src="/coi-serviceworker.min.js"></script>
 
+### What is in the data folder?
+
 ```{pyodide}
 #| autorun: false
 #| completion: true
 
+import os
 from os import listdir
+from datetime import datetime
 import pandas as pd
-#print(listdir("../../data"))
-#pd.read_csv('../../data/core_meta-data.csv')
-pd.read_csv('https://raw.githubusercontent.com/analect/quarto-graph-experiments/gh-pages/data/author_meta-data.csv')
+print(listdir("data"))
+print(listdir("data/kuzu-test"))
+
+print("------------")
+print("Check that the kuzu-test database is available for connection")
+print("------------")
+def get_file_info(directory):
+    file_data = []
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            file_path = os.path.join(root, file)
+            file_size = os.path.getsize(file_path)
+            mod_time = os.path.getmtime(file_path)
+            mod_date = datetime.fromtimestamp(mod_time)
+            file_data.append({
+                'File': file_path,
+                'Size (bytes)': file_size,
+                'Last Modified': mod_date
+            })
+    return pd.DataFrame(file_data)
+
+# Usage
+directory_path = 'data/kuzu-test'
+df = get_file_info(directory_path)
+
+# Display the table
+print(df.to_string(index=False))
+pd.read_csv('data/core_meta-data.csv')
+#pd.read_csv('https://raw.githubusercontent.com/analect/quarto-graph-experiments/gh-pages/data/author_meta-data.csv')
 #https://raw.githubusercontent.com/analect/quarto-graph-experiments/gh-pages/data/author_meta-data.csv
 ```
 
-Generate self-contained graph
+### Generate self-contained graph
 
 ```{pyodide}
 #| autorun: false
@@ -69,6 +99,7 @@ await conn.execute('COPY LivesIn FROM "/lives_in.csv";')
 
 #cypher query
 res = await conn.execute("MATCH (a:User)-[f:Follows]->(b:User)RETURN a,f,b")
+print(res)
 
 # display the graph
 G = toNetworkx(res,directed = True)
@@ -82,7 +113,7 @@ def display(g, width="100%", height="500px"): print(f'<iframe srcdoc="{g.generat
 display(g)
 ```
 
-Connect to a pre-existing `kuzu-test` database
+### Try to Connect to a pre-existing `kuzu-test` database
 
 ```{pyodide}
 #| autorun: false
@@ -91,14 +122,25 @@ Connect to a pre-existing `kuzu-test` database
 import networkx as nx,pandas as pd,pyarrow as pa,kuzu_wasm,js
 from pyvis.network import Network
 from kuzu_wasm.utils import *
+import shutil
+
+db_path = './data/kuzu-test'
+shutil.rmtree(db_path, ignore_errors=True)
 
 # init Kuzu database
 kuzu = await kuzu_wasm.init("https://analect.github.io/quarto-graph-experiments/package/kuzu-wasm/kuzu.js")
-db = await kuzu.Database("../../data/kuzu-test")
+db = await kuzu.Database(dbpath)
 conn = await kuzu.Connection(db)
 
 #cypher query
-res = await conn.execute("MATCH (a:Document)-[f:authored_by]->(b:Author) RETURN a.Title,f,b.Author;")
+#response = await conn.execute("MATCH (a:Document)-[f:authored_by]->(b:Author) RETURN a.Title,f,b.Author;")
+#response = await conn.execute("MATCH (a:Document)-[f:authored_by]->(b:Author) RETURN a,f,b;")
+#response = await conn.execute("MATCH (n)-[r]->(m) RETURN n,r,m;")
+res = await conn.execute("CALL SHOW_TABLES() RETURN *;")
+
+print(db_path)
+print(res)
+print(res.get_as_df())
 
 # display the graph
 G = toNetworkx(res,directed = True)
@@ -111,3 +153,32 @@ for i in range(len(g.nodes)): g.nodes[i]["label"] = g.nodes[i]["name"]
 def display(g, width="100%", height="500px"): print(f'<iframe srcdoc="{g.generate_html(notebook=True).replace(chr(34), "&quot;").replace(chr(39), "&#39;")}" style="width: {width}; height: {height}; border: none;"></iframe>')
 display(g)
 ```
+
+Would expect to get returned something like:
+
+
+```bash
+┌──────────────┬────────┬───────────────┬─────────┐
+│ name         │ type   │ database name │ comment │
+│ STRING       │ STRING │ STRING        │ STRING  │
+├──────────────┼────────┼───────────────┼─────────┤
+│ has_source   │ REL    │ local(kuzu)   │         │
+│ has_category │ REL    │ local(kuzu)   │         │
+│ Author       │ NODE   │ local(kuzu)   │         │
+│ Category     │ NODE   │ local(kuzu)   │         │
+│ authored_by  │ REL    │ local(kuzu)   │         │
+│ Source       │ NODE   │ local(kuzu)   │         │
+│ Document     │ NODE   │ local(kuzu)   │         │
+└──────────────┴────────┴───────────────┴─────────┘
+```
+
+Instead, I'm getting back this:
+
+```bash
+./data/kuzu-test
+name|type|database name|comment
+
+get_as_df
+```
+
+Which would suggest a connection is not being made to the kuzu database.
