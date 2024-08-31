@@ -129,7 +129,7 @@ shutil.rmtree(db_path, ignore_errors=True)
 
 # init Kuzu database
 kuzu = await kuzu_wasm.init("https://analect.github.io/quarto-graph-experiments/package/kuzu-wasm/kuzu.js")
-db = await kuzu.Database(dbpath)
+db = await kuzu.Database(db_path)
 conn = await kuzu.Connection(db)
 
 #cypher query
