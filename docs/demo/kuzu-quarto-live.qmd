@@ -8,8 +8,6 @@ categories: [kuzu, pyvis, quarto]
 author: "Analect"
 date: 2024-08-22
 format: live-html
-resources:
-  - "../../data/"
 pyodide:
   resources:
     - "../../data/"
