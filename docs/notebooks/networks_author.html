@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Olivier Caron">
+<meta name="author" content="Christophe Benavent">
+<meta name="dcterms.date" content="2023-11-20">
+<meta name="description" content="Source quarto file.Rendered version">
+
+<title>Systematic literature review – Quarto Graph Experiments</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../docs/notebooks/mesonetwork.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Systematic literature review – Quarto Graph Experiments">
+<meta property="og:description" content="* Source quarto file. * Rendered version">
+<meta property="og:site_name" content="Quarto Graph Experiments">
+</head>
+
+<body class="nav-sidebar docked nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-demo" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Demo</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-demo">    
+        <li>
+    <a class="dropdown-item" href="../../docs/demo/kuzu-quarto-live.html">
+ <span class="dropdown-text">Quarto graph experiment - DylanShang version</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../docs/demo/kuzu-use.html">
+ <span class="dropdown-text">Quarto graph experiment - leveraging Kuzu, PyVis (qmd)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../docs/demo/kuzu-use-repl.html">
+ <span class="dropdown-text">kuzu / pyvis leverage jupyterlite repl</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../docs/demo/old-kuzu-use.html">
+ <span class="dropdown-text">Quarto graph experiment - leveraging Kuzu, PyVis</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../../docs/notebooks/Export_Query_Results_to_NetworkX.html">
+ <span class="dropdown-text">Kuzu - Export Query Results to NetworkX</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../docs/notebooks/General_Kùzu_Demo.html">
+ <span class="dropdown-text">General Kuzu Demo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../docs/notebooks/KuzuGraphDemo.html">
+ <span class="dropdown-text">Kuzu Graph Store (LlamaIndex docs)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../docs/notebooks/mesonetwork.html">
+ <span class="dropdown-text">Réseau entre les citations des avis du CCNE</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../docs/notebooks/networks_author.html">
+ <span class="dropdown-text">Systematic literature review</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../docs/notebooks/networks_author.html">Systematic literature review</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs/notebooks/Export_Query_Results_to_NetworkX.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kuzu - Export Query Results to NetworkX</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs/notebooks/General_Kùzu_Demo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">General Kuzu Demo</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs/notebooks/KuzuGraphDemo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kuzu Graph Store (LlamaIndex docs)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs/notebooks/mesonetwork.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Réseau entre les citations des avis du CCNE</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../docs/notebooks/networks_author.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Systematic literature review</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose"><span class="header-section-number">1</span> Purpose</a></li>
+  <li><a href="#libraries-and-preparing-data" id="toc-libraries-and-preparing-data" class="nav-link" data-scroll-target="#libraries-and-preparing-data"><span class="header-section-number">2</span> Libraries and preparing data</a>
+  <ul class="collapse">
+  <li><a href="#summary-of-the-authors-data" id="toc-summary-of-the-authors-data" class="nav-link" data-scroll-target="#summary-of-the-authors-data"><span class="header-section-number">2.1</span> Summary of the authors data</a></li>
+  <li><a href="#check-name-of-authors" id="toc-check-name-of-authors" class="nav-link" data-scroll-target="#check-name-of-authors"><span class="header-section-number">2.2</span> Check name of authors</a></li>
+  <li><a href="#correct-the-duplicate-names" id="toc-correct-the-duplicate-names" class="nav-link" data-scroll-target="#correct-the-duplicate-names"><span class="header-section-number">2.3</span> Correct the duplicate names</a></li>
+  <li><a href="#verification-of-duplicate-names" id="toc-verification-of-duplicate-names" class="nav-link" data-scroll-target="#verification-of-duplicate-names"><span class="header-section-number">2.4</span> Verification of duplicate names</a></li>
+  </ul></li>
+  <li><a href="#co-authorship-networks" id="toc-co-authorship-networks" class="nav-link" data-scroll-target="#co-authorship-networks"><span class="header-section-number">3</span> Co-authorship networks</a>
+  <ul class="collapse">
+  <li><a href="#network-basic-visualization" id="toc-network-basic-visualization" class="nav-link" data-scroll-target="#network-basic-visualization"><span class="header-section-number">3.1</span> Network basic visualization</a></li>
+  <li><a href="#network-visualization-with-pyvis" id="toc-network-visualization-with-pyvis" class="nav-link" data-scroll-target="#network-visualization-with-pyvis"><span class="header-section-number">3.2</span> Network visualization with Pyvis</a></li>
+  <li><a href="#detect-communities-with-louvains-algorithm" id="toc-detect-communities-with-louvains-algorithm" class="nav-link" data-scroll-target="#detect-communities-with-louvains-algorithm"><span class="header-section-number">3.3</span> Detect communities with Louvain’s algorithm</a></li>
+  <li><a href="#network-visualization-with-ipysigma-pliquehal-03903518v1" id="toc-network-visualization-with-ipysigma-pliquehal-03903518v1" class="nav-link" data-scroll-target="#network-visualization-with-ipysigma-pliquehal-03903518v1"><span class="header-section-number">3.4</span> Network visualization with ipysigma <span class="citation" data-cites="plique:hal-03903518v1">[@plique:hal-03903518v1]</span></a></li>
+  <li><a href="#an-interesting-metric-the-graph-density" id="toc-an-interesting-metric-the-graph-density" class="nav-link" data-scroll-target="#an-interesting-metric-the-graph-density"><span class="header-section-number">3.5</span> An interesting metric: the graph density</a></li>
+  </ul></li>
+  <li><a href="#graph-density-of-references" id="toc-graph-density-of-references" class="nav-link" data-scroll-target="#graph-density-of-references"><span class="header-section-number">4</span> Graph density of references</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/analect/quarto-graph-experiments/edit/main/docs/notebooks/networks_author.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/analect/quarto-graph-experiments/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Systematic literature review</h1>
+<p class="subtitle lead">A focus on authors, articles, references with networks</p>
+</div>
+
+<div>
+  <div class="description">
+    <ul>
+    <li><a href="https://github.com/oliviercaron/systematic_lit_review/blob/main/networks_author.qmd">Source quarto file</a>.</li>
+    <li><a href="https://oliviercaron.github.io/systematic_lit_review/networks_author.html#purpose">Rendered version</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Olivier Caron </p>
+             <p>Christophe Benavent </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 20, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This was the original document metadata, which I am over-riding above, just to get things working in this documentation site.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">title:</span> <span class="st">"Systematic literature review"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bibliography:</span> references.bib</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">title-block-banner:</span> true</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">subtitle:</span> <span class="st">"A focus on authors, articles, references with networks"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">author:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> name: Olivier Caron</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">email:</span> olivier.caron@dauphine.psl.eu</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">affiliations:</span> </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      <span class="ex">name:</span> <span class="st">"Paris Dauphine - PSL"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="ex">city:</span> Paris</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="ex">state:</span> France</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> name: Christophe Benavent</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">email:</span> christophe.benavent@dauphine.psl.eu</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="ex">affiliations:</span> </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="ex">name:</span> <span class="st">"Paris Dauphine - PSL"</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="ex">city:</span> Paris</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      <span class="ex">state:</span> France</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span> : <span class="st">"last-modified"</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ex">toc:</span> true</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ex">number-sections:</span> true</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ex">number-depth:</span> 10</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ex">format:</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="ex">html:</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="ex">theme:</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      <span class="ex">light:</span> yeti</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>      <span class="co">#dark: darkly</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="ex">code-fold:</span> true</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="ex">code-summary:</span> <span class="st">"Display code"</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="ex">code-tools:</span> true <span class="co">#enables to display/hide all blocks of code</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="ex">code-copy:</span> true <span class="co">#enables to copy code</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="ex">grid:</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>      <span class="ex">body-width:</span> 1000px</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>      <span class="ex">margin-width:</span> 100px</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="ex">toc:</span> true</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="ex">toc-location:</span> left</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ex">execute:</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="ex">echo:</span> true</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="ex">warning:</span> false</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  <span class="ex">message:</span> false</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ex">editor:</span> visual</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ex">fig-align:</span> <span class="st">"center"</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ex">highlight-style:</span> ayu</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ex">css:</span> styles.css</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ex">reference-location:</span> margin</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="purpose" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="purpose"><span class="header-section-number">1</span> Purpose</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cowsay<span class="sc">::</span><span class="fu">say</span>(<span class="st">"After researching the articles and references by making graphs to</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">better visualize the structure of the research. We want to focus</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">here on the authors, trying to understand how communities evolve over time."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="libraries-and-preparing-data" class="level2 page-columns page-full" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="libraries-and-preparing-data"><span class="header-section-number">2</span> Libraries and preparing data</h2>
+<section id="summary-of-the-authors-data" class="level3 page-columns page-full" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="summary-of-the-authors-data"><span class="header-section-number">2.1</span> Summary of the authors data</h3>
+<div class="cell column-screen-inset-right">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: summary-authors-data</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| column: screen-inset-right</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="in">library(reactable)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="in">library(gt)</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="in">library(skimr)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="in">library(plotly)</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="in">library(reticulate)</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="in">library(patchwork)</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="in">list_articles &lt;- read_csv2("nlp_full_data_final_18-08-2023.csv") %&gt;%</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(marketing = as.logical(marketing)) %&gt;%</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(authid = as.character(authid)) %&gt;%</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(afid = as.character(afid)) %&gt;%</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(entry_number = as.character(entry_number)) %&gt;%</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(source_id = as.character(source_id)) %&gt;%</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(article_number = as.character(article_number)) %&gt;%</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(openaccess = as.logical(openaccess))</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="in">skim(list_articles) #%&gt;%</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="in">  #filter(!skim_type %in% c("logical"))</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="check-name-of-authors" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="check-name-of-authors"><span class="header-section-number">2.2</span> Check name of authors</h3>
+<p>We need to check if there are more than one unique <code>authorname</code> per <code>authid</code>. If so, we need to change the different names of author to the same name in order to have the exact same node per author later in the network.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> list_articles <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(authid) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(authid, authname, entry_number) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">n</span>())</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> test <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(authid) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n_distinct</span>(authname) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(authid, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>result <span class="sc">%&gt;%</span> <span class="fu">reactable</span>()</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>number_duplicates <span class="ot">&lt;-</span> <span class="fu">nrow</span>(result)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"There are "</span>, number_duplicates, <span class="st">" authors registered with different names."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="correct-the-duplicate-names" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="correct-the-duplicate-names"><span class="header-section-number">2.3</span> Correct the duplicate names</h3>
+<p>Let’s correct that by using one property of the distinct function: the <code>.keep_all = TRUE</code> parameter. It keeps the first occurrence of each group, which is the first row encountered for each unique combination of <code>authid</code> and <code>authname</code>. It will be faster than manually changing the name of each author.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge list_articles with result on the authid column</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>merged_df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(list_articles, result, <span class="at">by =</span> <span class="st">"authid"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace authname values in list_articles with those from result</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>list_articles<span class="sc">$</span>authname <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(merged_df<span class="sc">$</span>authname.y), merged_df<span class="sc">$</span>authname.y, list_articles<span class="sc">$</span>authname)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep only marketing articles and filter "Erratum" type of publications (=correction)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>list_articles <span class="ot">&lt;-</span> list_articles <span class="sc">%&gt;%</span> </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(marketing <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(subtypeDescription <span class="sc">!=</span> <span class="st">"Erratum"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"There are"</span>, <span class="fu">n_distinct</span>(list_articles<span class="sc">$</span>entry_number), <span class="st">"articles and"</span>, <span class="fu">n_distinct</span>(list_articles<span class="sc">$</span>authname), <span class="st">"authors overall in the data."</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Write the updated dataframe to a CSV file </span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv2</span>(list_articles, <span class="st">"nlp_full_data_final_unique_author_names.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It is now done. We can check again if there are more than one unique <code>authorname</code> per <code>authid</code>.</p>
+</section>
+<section id="verification-of-duplicate-names" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="verification-of-duplicate-names"><span class="header-section-number">2.4</span> Verification of duplicate names</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> list_articles <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(authid) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(authid, authname, entry_number) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">n</span>())</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> test <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(authid) <span class="sc">%&gt;%</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n_distinct</span>(authname) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(authid, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(entry_number)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>result <span class="sc">%&gt;%</span> <span class="fu">reactable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It’s alright, we can now continue on constructing the data frames for the networks.</p>
+</section>
+</section>
+<section id="co-authorship-networks" class="level2 page-columns page-full" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="co-authorship-networks"><span class="header-section-number">3</span> Co-authorship networks</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#G = nx.from_pandas_edgelist(network_data_2022_2023, 'authname1', 'authname2', edge_attr='value', create_using=nx.Graph())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="network-basic-visualization" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="network-basic-visualization"><span class="header-section-number">3.1</span> Network basic visualization</h3>
+<p>This is a basic visualization done with the NetworkX library and matplotlib.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: network-visualization</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: Visualization of the co-authorship network for the 2022-2023 period, created using NetworkX and matplotlib.</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-align: center</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="in">#plt.figure(figsize=(20,20))</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="in">#pos = nx.kamada_kawai_layout(G)</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="in">#nx.draw(G, with_labels=True, node_color='skyblue', edge_cmap=plt.cm.Blues, pos=pos)</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is not interactive and the result is not enlightening at all. We then decide to use <code>Pyvis</code> to create an interactive visualization.</p>
+</div>
+</div>
+</section>
+<section id="network-visualization-with-pyvis" class="level3 page-columns page-full" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="network-visualization-with-pyvis"><span class="header-section-number">3.2</span> Network visualization with Pyvis</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pyvis enables us to create interactive visualizations and modify the network layout in real time with the <code>net.show_buttons(filter_=['physics'])</code> command. This button then generates options to include in our code by using the <code>net.set_options()</code> function. <a href="https://pyvis.readthedocs.io/en/latest/tutorial.html#using-the-configuration-ui-to-dynamically-tweak-network-settings" title="button physics Pyvis">More information here</a>.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: network-visualization-pyvis</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="in">#from pyvis.network import Network</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="in">#net = Network(notebook=True, cdn_resources='remote', width=1500, height=900, bgcolor="white", font_color="black")</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="in">#net.show_buttons(filter_=['physics'])</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="in">#net.set_options("""</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="in">#const options = {</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="in">#  "physics": {</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="in">#    "forceAtlas2Based": {</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="in">#      "gravitationalConstant": -13,</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="in">#      "centralGravity": 0.015,</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="in">#      "springLength": 70</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="in">#    },</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="in">#    "minVelocity": 0.75,</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="in">#    "solver": "forceAtlas2Based"</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="in">#  }</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="in">#}</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="in">#""")</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="in">#node_degree = dict(G.degree)</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="in">## Some values for nodes</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="in"># Multiply node sizes by two</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="in">#node_degree_doubled = {node: 2 * degree for node, degree in node_degree.items()}</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="in">#node_degree_centrality = nx.degree_centrality(G)</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="in">#node_degree_betweenness = nx.betweenness_centrality(G)</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="in">#node_degree_closeness = nx.closeness_centrality(G)</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="in">#node_degree_constraint = nx.constraint(G)</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a><span class="in"># Set the node attributes with the doubled sizes</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="in">#nx.set_node_attributes(G, node_degree_doubled, 'size')</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="in">#nx.set_node_attributes(G, node_degree_centrality, 'centrality')</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="in">#nx.set_node_attributes(G, node_degree_betweenness, 'betweenness')</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a><span class="in">#nx.set_node_attributes(G, node_degree_closeness, 'closeness')</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="in">#nx.set_node_attributes(G, node_degree_constraint, 'constraint')</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="in">##nx.set_node_attributes(G, affilauthor_2022_2023, 'affiliation')</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="in">#nx.set_node_attributes(G, countryauthor_2022_2023, 'country')</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="in">#nx.set_node_attributes(G, citations_2022_2023, 'citations')</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="in">#nx.set_node_attributes(G, article_2022_2023, 'title')</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a><span class="in">#nx.set_node_attributes(G, journal_2022_2023, 'journal')</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a><span class="in">#listnodes = net.nodes</span></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a><span class="in">#net.nodes.__getitem__(1)</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a><span class="in">#listnodes = net.nodes</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a><span class="in">#net.from_nx(G)</span></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a><span class="in">#net.show("networks/authors/network_2022_2023_pyvis.html")</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<iframe width="1500" height="900" src="networks/authors/network_2022_2023_pyvis.html" title="Quarto Documentation" frameborder="0" class="column-page"></iframe>
+</section>
+<section id="detect-communities-with-louvains-algorithm" class="level3 page-columns page-full" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="detect-communities-with-louvains-algorithm"><span class="header-section-number">3.3</span> Detect communities with Louvain’s algorithm</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: community-detection-louvain</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="in">#import community as community_louvain</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="in"># Compute the best partition</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="in">#communities = community_louvain.best_partition(G)</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="in">#dftest = pd.DataFrame(list(communities.items()), columns=['authname', 'community'])</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="in">#nx.set_node_attributes(G, communities, 'group')</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: network-visualization-pyvis-louvain</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="in">#com_net = Network(notebook=True, cdn_resources='remote', width=1500, height=900, bgcolor="white", font_color="black")</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="in">#com_net.set_options("""</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="in">#const options = {</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="in">#  "physics": {</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="in">#    "forceAtlas2Based": {</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="in">#      "gravitationalConstant": -13,</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="in">#      "centralGravity": 0.015,</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="in">#      "springLength": 50</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="in">#    },</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="in">#    "minVelocity": 0.75,</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="in">#    "solver": "forceAtlas2Based"</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="in">#  }</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="in">#}</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="in">#""")</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="in">#com_net.from_nx(G)</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="in">#com_net.show("networks/authors/network_2022_2023_louvain_pyvis.html")</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<iframe width="1500" height="900" src="networks/authors/network_2022_2023_louvain_pyvis.html" title="network_2022_2023_louvain" frameborder="0" class="column-page"></iframe>
+</section>
+<section id="network-visualization-with-ipysigma-pliquehal-03903518v1" class="level3 page-columns page-full" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="network-visualization-with-ipysigma-pliquehal-03903518v1"><span class="header-section-number">3.4</span> Network visualization with ipysigma <span class="citation" data-cites="plique:hal-03903518v1">[@plique:hal-03903518v1]</span></h3>
+<section id="a-function-to-graph-them-all" class="level4 page-columns page-full" data-number="3.4.1">
+<h4 data-number="3.4.1" class="anchored" data-anchor-id="a-function-to-graph-them-all"><span class="header-section-number">3.4.1</span> A function to graph them all</h4>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/graph_ring.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="289"></p>
+</figure>
+</div>
+</div></div><div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constants</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>COLUMNS_TO_COLLECT <span class="op">=</span> [</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'affilname'</span>, <span class="st">'affiliation_country'</span>, <span class="st">'dc:title'</span>, <span class="st">'prism:publicationName'</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'subtypeDescription'</span>, <span class="st">'year'</span>, <span class="st">'citedby_count'</span>, <span class="st">'subjects_area'</span>, <span class="st">'authkeywords'</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_author_info(filtered_articles, columns):</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Given a DataFrame of filtered articles and a list of column names,</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">    this function collects author information and returns it as a dictionary.</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    author_info <span class="op">=</span> {col: {} <span class="cf">for</span> col <span class="kw">in</span> columns}</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    author_info[<span class="st">"citations"</span>] <span class="op">=</span> {}</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _, row <span class="kw">in</span> filtered_articles.iterrows():</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>        author_name <span class="op">=</span> row[<span class="st">'authname'</span>]</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> pd.notna(row[<span class="st">'citedby_count'</span>]):</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>            author_info[<span class="st">"citations"</span>][author_name] <span class="op">=</span> author_info[<span class="st">"citations"</span>].get(author_name, <span class="dv">0</span>) <span class="op">+</span> row[<span class="st">'citedby_count'</span>]</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> col <span class="kw">in</span> columns:</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>            value <span class="op">=</span> row[col]</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> pd.notna(value):</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>                value <span class="op">=</span> <span class="bu">str</span>(value).strip()</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> author_name <span class="kw">in</span> author_info[col]:</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> value <span class="kw">not</span> <span class="kw">in</span> author_info[col][author_name]:</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>                        author_info[col][author_name] <span class="op">+=</span> <span class="st">" | "</span> <span class="op">+</span> value</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>                    author_info[col][author_name] <span class="op">=</span> value</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> author_info</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigma_graph(dataframe, start_year, end_year):</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="co">    Creates a graph representing author collaborations based on a given DataFrame of articles.</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="co">    Filters the articles based on the given start and end years.</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Error handling</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> dataframe.empty:</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"The DataFrame is empty."</span>)</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span>, <span class="va">None</span></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> column <span class="kw">in</span> COLUMNS_TO_COLLECT:</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> column <span class="kw">not</span> <span class="kw">in</span> dataframe.columns:</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"The DataFrame is missing the column: </span><span class="sc">{</span>column<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span>, <span class="va">None</span></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>    list_articles <span class="op">=</span> dataframe</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>    filtered_articles <span class="op">=</span> list_articles[(list_articles[<span class="st">'year'</span>] <span class="op">&gt;=</span> start_year) <span class="op">&amp;</span> (list_articles[<span class="st">'year'</span>] <span class="op">&lt;=</span> end_year)]</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>    author_pairs <span class="op">=</span> []</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>    grouped <span class="op">=</span> filtered_articles.groupby(<span class="st">'entry_number'</span>)[[<span class="st">'authid'</span>, <span class="st">'authname'</span>]].agg(<span class="bu">list</span>).reset_index()</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _, row <span class="kw">in</span> grouped.iterrows():</span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>        entry_number <span class="op">=</span> row[<span class="st">'entry_number'</span>]</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>        authors <span class="op">=</span> row[<span class="st">'authid'</span>]</span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>        authnames <span class="op">=</span> row[<span class="st">'authname'</span>]</span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(authors) <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a>            author_pairs.append((entry_number, authors[<span class="dv">0</span>], authors[<span class="dv">0</span>], authnames[<span class="dv">0</span>], authnames[<span class="dv">0</span>]))</span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="bu">len</span>(authors) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>            author_combinations <span class="op">=</span> <span class="bu">list</span>(combinations(<span class="bu">range</span>(<span class="bu">len</span>(authors)), <span class="dv">2</span>))</span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i, j <span class="kw">in</span> author_combinations:</span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>                author_pairs.append((entry_number, authors[i], authors[j], authnames[i], authnames[j]))</span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a>    result_df <span class="op">=</span> pd.DataFrame(author_pairs, columns<span class="op">=</span>[<span class="st">'entry_number'</span>, <span class="st">'authid1'</span>, <span class="st">'authid2'</span>, <span class="st">'authname1'</span>, <span class="st">'authname2'</span>])</span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a>    collaboration_df <span class="op">=</span> result_df[[<span class="st">"authname1"</span>, <span class="st">"authname2"</span>]]</span>
+<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a>    collaboration_df <span class="op">=</span> pd.DataFrame(np.sort(collaboration_df.values, axis<span class="op">=</span><span class="dv">1</span>), columns<span class="op">=</span>collaboration_df.columns)</span>
+<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a>    collaboration_df[<span class="st">'value'</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a>    collaboration_df <span class="op">=</span> collaboration_df.groupby([<span class="st">"authname1"</span>, <span class="st">"authname2"</span>], sort<span class="op">=</span><span class="va">False</span>, as_index<span class="op">=</span><span class="va">False</span>).<span class="bu">sum</span>()</span>
+<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a>    G <span class="op">=</span> nx.from_pandas_edgelist(collaboration_df, <span class="st">'authname1'</span>, <span class="st">'authname2'</span>, edge_attr<span class="op">=</span><span class="st">'value'</span>, create_using<span class="op">=</span>nx.Graph())</span>
+<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> u, v <span class="kw">in</span> G.edges:</span>
+<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a>        G[u][v][<span class="st">"color"</span>] <span class="op">=</span> <span class="st">"#7D7C7C"</span></span>
+<span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-78"><a href="#cb12-78" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> index, row <span class="kw">in</span> collaboration_df.iterrows():</span>
+<span id="cb12-79"><a href="#cb12-79" aria-hidden="true" tabindex="-1"></a>        G.add_edge(row[<span class="st">'authname1'</span>], row[<span class="st">'authname2'</span>], weight<span class="op">=</span>row[<span class="st">'value'</span>])</span>
+<span id="cb12-80"><a href="#cb12-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-81"><a href="#cb12-81" aria-hidden="true" tabindex="-1"></a>    metrics <span class="op">=</span> {</span>
+<span id="cb12-82"><a href="#cb12-82" aria-hidden="true" tabindex="-1"></a>        <span class="st">'centrality'</span>: nx.degree_centrality,</span>
+<span id="cb12-83"><a href="#cb12-83" aria-hidden="true" tabindex="-1"></a>        <span class="st">'betweenness'</span>: nx.betweenness_centrality,</span>
+<span id="cb12-84"><a href="#cb12-84" aria-hidden="true" tabindex="-1"></a>        <span class="st">'closeness'</span>: nx.closeness_centrality,</span>
+<span id="cb12-85"><a href="#cb12-85" aria-hidden="true" tabindex="-1"></a>        <span class="st">'eigenvector_centrality'</span>: partial(nx.eigenvector_centrality, max_iter<span class="op">=</span><span class="dv">1000</span>),</span>
+<span id="cb12-86"><a href="#cb12-86" aria-hidden="true" tabindex="-1"></a>        <span class="st">'burt_constraint_weighted'</span>: partial(nx.constraint, weight<span class="op">=</span><span class="st">"value"</span>),</span>
+<span id="cb12-87"><a href="#cb12-87" aria-hidden="true" tabindex="-1"></a>        <span class="st">'burt_constraint_unweighted'</span>: nx.constraint</span>
+<span id="cb12-88"><a href="#cb12-88" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-89"><a href="#cb12-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-90"><a href="#cb12-90" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> attr, func <span class="kw">in</span> metrics.items():</span>
+<span id="cb12-91"><a href="#cb12-91" aria-hidden="true" tabindex="-1"></a>        nx.set_node_attributes(G, func(G), attr)</span>
+<span id="cb12-92"><a href="#cb12-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-93"><a href="#cb12-93" aria-hidden="true" tabindex="-1"></a>    author_info <span class="op">=</span> get_author_info(filtered_articles, COLUMNS_TO_COLLECT)</span>
+<span id="cb12-94"><a href="#cb12-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-95"><a href="#cb12-95" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> COLUMNS_TO_COLLECT:</span>
+<span id="cb12-96"><a href="#cb12-96" aria-hidden="true" tabindex="-1"></a>        nx.set_node_attributes(G, author_info[col], col)</span>
+<span id="cb12-97"><a href="#cb12-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-98"><a href="#cb12-98" aria-hidden="true" tabindex="-1"></a>    nx.set_node_attributes(G, author_info[<span class="st">'citations'</span>], <span class="st">'citations'</span>)</span>
+<span id="cb12-99"><a href="#cb12-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-100"><a href="#cb12-100" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute the inverse burt constraint to plot the lowest values as the biggest nodes</span></span>
+<span id="cb12-101"><a href="#cb12-101" aria-hidden="true" tabindex="-1"></a>    <span class="co"># (= authors that are the less constrained in their network =&gt; multiple probable collaborations)</span></span>
+<span id="cb12-102"><a href="#cb12-102" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> node <span class="kw">in</span> G.nodes:</span>
+<span id="cb12-103"><a href="#cb12-103" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check if the 'burt_constraint_weighted' metric exists for the node</span></span>
+<span id="cb12-104"><a href="#cb12-104" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">'burt_constraint_weighted'</span> <span class="kw">in</span> G.nodes[node]:</span>
+<span id="cb12-105"><a href="#cb12-105" aria-hidden="true" tabindex="-1"></a>            burt_score <span class="op">=</span> G.nodes[node][<span class="st">'burt_constraint_weighted'</span>]</span>
+<span id="cb12-106"><a href="#cb12-106" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Calculate the inverse, avoiding division by zero</span></span>
+<span id="cb12-107"><a href="#cb12-107" aria-hidden="true" tabindex="-1"></a>            G.nodes[node][<span class="st">'inverse_burt_weighted'</span>] <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> burt_score <span class="cf">if</span> burt_score <span class="op">!=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb12-108"><a href="#cb12-108" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb12-109"><a href="#cb12-109" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Handle the case where the 'burt_constraint_weighted' metric is not available for this node</span></span>
+<span id="cb12-110"><a href="#cb12-110" aria-hidden="true" tabindex="-1"></a>            <span class="co"># For example, by setting the value to None or a default value</span></span>
+<span id="cb12-111"><a href="#cb12-111" aria-hidden="true" tabindex="-1"></a>            G.nodes[node][<span class="st">'inverse_burt_weighted'</span>] <span class="op">=</span> <span class="va">None</span>  <span class="co"># or another default value</span></span>
+<span id="cb12-112"><a href="#cb12-112" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb12-113"><a href="#cb12-113" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute Louvain commmunities</span></span>
+<span id="cb12-114"><a href="#cb12-114" aria-hidden="true" tabindex="-1"></a>    partition <span class="op">=</span> community_louvain.best_partition(G)</span>
+<span id="cb12-115"><a href="#cb12-115" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-116"><a href="#cb12-116" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> node, comm_number <span class="kw">in</span> partition.items():</span>
+<span id="cb12-117"><a href="#cb12-117" aria-hidden="true" tabindex="-1"></a>      G.nodes[node][<span class="st">'community'</span>] <span class="op">=</span> comm_number</span>
+<span id="cb12-118"><a href="#cb12-118" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb12-119"><a href="#cb12-119" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Color the graph using the greedy coloring algorithm with the 'largest_first' strategy</span></span>
+<span id="cb12-120"><a href="#cb12-120" aria-hidden="true" tabindex="-1"></a>    colors <span class="op">=</span> nx.greedy_color(G, strategy<span class="op">=</span><span class="st">'largest_first'</span>, interchange<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb12-121"><a href="#cb12-121" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-122"><a href="#cb12-122" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set the computed colors as an attribute to each node in the graph</span></span>
+<span id="cb12-123"><a href="#cb12-123" aria-hidden="true" tabindex="-1"></a>    nx.set_node_attributes(G, colors, <span class="st">'color'</span>)</span>
+<span id="cb12-124"><a href="#cb12-124" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Now, each node in the graph G has an attribute 'color' that corresponds to the color assigned by the greedy_color function</span></span>
+<span id="cb12-125"><a href="#cb12-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-126"><a href="#cb12-126" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-127"><a href="#cb12-127" aria-hidden="true" tabindex="-1"></a>    data_for_df <span class="op">=</span> []</span>
+<span id="cb12-128"><a href="#cb12-128" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> node <span class="kw">in</span> G.nodes(data<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb12-129"><a href="#cb12-129" aria-hidden="true" tabindex="-1"></a>        <span class="co"># `node` is a tuple (node_name, attributes_dict)</span></span>
+<span id="cb12-130"><a href="#cb12-130" aria-hidden="true" tabindex="-1"></a>        node_data <span class="op">=</span> node[<span class="dv">1</span>]  <span class="co"># Extracting the attributes dictionary</span></span>
+<span id="cb12-131"><a href="#cb12-131" aria-hidden="true" tabindex="-1"></a>        node_data[<span class="st">'Node'</span>] <span class="op">=</span> node[<span class="dv">0</span>]  <span class="co"># Adding the node name as an attribute</span></span>
+<span id="cb12-132"><a href="#cb12-132" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-133"><a href="#cb12-133" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Adding the attributes dictionary of this node to the list</span></span>
+<span id="cb12-134"><a href="#cb12-134" aria-hidden="true" tabindex="-1"></a>        data_for_df.append(node_data)</span>
+<span id="cb12-135"><a href="#cb12-135" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-136"><a href="#cb12-136" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Creating a DataFrame from the list of dictionaries</span></span>
+<span id="cb12-137"><a href="#cb12-137" aria-hidden="true" tabindex="-1"></a>    df_nodes <span class="op">=</span> pd.DataFrame(data_for_df)</span>
+<span id="cb12-138"><a href="#cb12-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-139"><a href="#cb12-139" aria-hidden="true" tabindex="-1"></a>    Sigma.write_html(G,</span>
+<span id="cb12-140"><a href="#cb12-140" aria-hidden="true" tabindex="-1"></a>                 default_edge_type       <span class="op">=</span> <span class="st">"curve"</span>,                                                     <span class="co"># Default edge type</span></span>
+<span id="cb12-141"><a href="#cb12-141" aria-hidden="true" tabindex="-1"></a>                 clickable_edges         <span class="op">=</span> <span class="va">True</span>,                                                        <span class="co"># Clickable edges</span></span>
+<span id="cb12-142"><a href="#cb12-142" aria-hidden="true" tabindex="-1"></a>                 edge_size               <span class="op">=</span> <span class="st">"value"</span>,                                                     <span class="co"># Set edge size</span></span>
+<span id="cb12-143"><a href="#cb12-143" aria-hidden="true" tabindex="-1"></a>                 fullscreen              <span class="op">=</span> <span class="va">True</span>,                                                        <span class="co"># Display in fullscreen</span></span>
+<span id="cb12-144"><a href="#cb12-144" aria-hidden="true" tabindex="-1"></a>                 label_density           <span class="op">=</span> <span class="dv">3</span>,                                                           <span class="co"># Label density (= increase to have more labels appear at normal zoom level)</span></span>
+<span id="cb12-145"><a href="#cb12-145" aria-hidden="true" tabindex="-1"></a>                 label_font              <span class="op">=</span> <span class="st">"Helvetica Neue"</span>,                                            <span class="co"># Label font</span></span>
+<span id="cb12-146"><a href="#cb12-146" aria-hidden="true" tabindex="-1"></a>                 max_categorical_colors  <span class="op">=</span> <span class="dv">10</span>,                                                          <span class="co"># Max categorical colors</span></span>
+<span id="cb12-147"><a href="#cb12-147" aria-hidden="true" tabindex="-1"></a>                 node_border_color_from  <span class="op">=</span> <span class="st">'node'</span>,                                                      <span class="co"># Node border color from node attribute</span></span>
+<span id="cb12-148"><a href="#cb12-148" aria-hidden="true" tabindex="-1"></a>                 node_color              <span class="op">=</span> <span class="st">"community"</span>,                                                 <span class="co"># Set node colors</span></span>
+<span id="cb12-149"><a href="#cb12-149" aria-hidden="true" tabindex="-1"></a>                 node_label_size         <span class="op">=</span> <span class="st">"inverse_burt_weighted"</span>,                                                 <span class="co"># Node label size</span></span>
+<span id="cb12-150"><a href="#cb12-150" aria-hidden="true" tabindex="-1"></a>                 <span class="co">#node_label_size_range   = (12, 36),                                                    # Node label size range</span></span>
+<span id="cb12-151"><a href="#cb12-151" aria-hidden="true" tabindex="-1"></a>                 node_label_size_range   <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">36</span>),                                                    <span class="co"># Node label size range</span></span>
+<span id="cb12-152"><a href="#cb12-152" aria-hidden="true" tabindex="-1"></a>                 <span class="co">#node_metrics            = {"community": {"name": "louvain", "resolution": 1}},         # Specify node metrics</span></span>
+<span id="cb12-153"><a href="#cb12-153" aria-hidden="true" tabindex="-1"></a>                 node_size               <span class="op">=</span> <span class="st">"inverse_burt_weighted"</span>,                                                 <span class="co"># Node size</span></span>
+<span id="cb12-154"><a href="#cb12-154" aria-hidden="true" tabindex="-1"></a>                 <span class="co">#node_size_range         = (3, 30),                                                     # Node size range</span></span>
+<span id="cb12-155"><a href="#cb12-155" aria-hidden="true" tabindex="-1"></a>                 node_size_range         <span class="op">=</span> (<span class="dv">2</span>, <span class="dv">20</span>),                                                     <span class="co"># Node size range</span></span>
+<span id="cb12-156"><a href="#cb12-156" aria-hidden="true" tabindex="-1"></a>                 path                    <span class="op">=</span> <span class="ss">f"networks/authors/</span><span class="sc">{</span>start_year<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>end_year<span class="sc">}</span><span class="ss">_sigma_v2_burt.html"</span>,   <span class="co"># Output file path</span></span>
+<span id="cb12-157"><a href="#cb12-157" aria-hidden="true" tabindex="-1"></a>                 start_layout            <span class="op">=</span> <span class="dv">3</span>,                                                           <span class="co"># Start layout algorithm</span></span>
+<span id="cb12-158"><a href="#cb12-158" aria-hidden="true" tabindex="-1"></a>                 <span class="co">#node_border_color      = "black",                                                     # Node border color</span></span>
+<span id="cb12-159"><a href="#cb12-159" aria-hidden="true" tabindex="-1"></a>                 <span class="co">#edge_color             = "#7D7C7C"                                                    # Edge color</span></span>
+<span id="cb12-160"><a href="#cb12-160" aria-hidden="true" tabindex="-1"></a>                 <span class="co"># node_label_color      = "community"                                                  # Node label color</span></span>
+<span id="cb12-161"><a href="#cb12-161" aria-hidden="true" tabindex="-1"></a>                 )</span>
+<span id="cb12-162"><a href="#cb12-162" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-163"><a href="#cb12-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-164"><a href="#cb12-164" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> G, df_nodes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="co-authorship-network-for-the-2021-2023-period-click-here-for-fullscreen" class="level4 page-columns page-full" data-number="3.4.2">
+<h4 data-number="3.4.2" class="anchored" data-anchor-id="co-authorship-network-for-the-2021-2023-period-click-here-for-fullscreen"><span class="header-section-number">3.4.2</span> Co-authorship network for the 2021-2023 period (<a href="https://oliviercaron.github.io/systematic_lit_review/networks/authors/2021_2023_sigma_v2.html">click here for fullscreen</a>)</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>G_2021_2023, df_2021_2023 <span class="op">=</span> sigma_graph(list_articles, <span class="dv">2021</span>, <span class="dv">2023</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot distribution of communities</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>df_2021_2023 <span class="ot">&lt;-</span> py<span class="sc">$</span>df_2021_2023</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#select top 5 authors with lowest burts constraint</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>df_2021_2023 <span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(inverse_burt_weighted)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>top5communities <span class="ot">&lt;-</span> df_2021_2023 <span class="sc">%&gt;%</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(community) <span class="sc">%&gt;%</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(community)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>df_2021_2023 <span class="sc">%&gt;%</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(community <span class="sc">%in%</span> top5communities<span class="sc">$</span>community)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<iframe width="1500" height="900" src="networks/authors/2021_2023_sigma_v2.html" title="Sigma graph" frameborder="0" class="column-page"></iframe>
+</section>
+<section id="co-authorship-network-for-the-2018-2022-period-click-here-for-fullscreen" class="level4 page-columns page-full" data-number="3.4.3">
+<h4 data-number="3.4.3" class="anchored" data-anchor-id="co-authorship-network-for-the-2018-2022-period-click-here-for-fullscreen"><span class="header-section-number">3.4.3</span> Co-authorship network for the 2018-2022 period (<a href="https://oliviercaron.github.io/systematic_lit_review/networks/authors/2018_2022_sigma_v2.html">click here for fullscreen</a>)</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>G_2018_2022, df_2018_2022 <span class="op">=</span> sigma_graph(list_articles, <span class="dv">2018</span>, <span class="dv">2022</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> nx.greedy_color(G_2018_2022, strategy<span class="op">=</span><span class="st">'largest_first'</span>, interchange<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>colorsdf <span class="op">=</span> pd.DataFrame.from_dict(colors, orient<span class="op">=</span><span class="st">'index'</span>, columns<span class="op">=</span>[<span class="st">'color'</span>])</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plot distribution of colors</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>colorsdf[<span class="st">'color'</span>].value_counts().plot(kind<span class="op">=</span><span class="st">'bar'</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>), rot<span class="op">=</span><span class="dv">0</span>, title<span class="op">=</span><span class="st">"Distribution of colors in the 2018-2022 network"</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#print("The density of the graph is {}".format(nx.density(G_2018_2021))</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>communities <span class="op">=</span> community_louvain.best_partition(G_2018_2022)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"There are </span><span class="sc">{}</span><span class="st"> communities in the 2018-2022 network"</span>.<span class="bu">format</span>(<span class="bu">len</span>(<span class="bu">set</span>(communities.values()))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<iframe width="1500" height="900" src="networks/authors/2018_2022_sigma_v2.html" title="Sigma graph" frameborder="0" class="column-page"></iframe>
+</section>
+<section id="co-authorship-network-for-the-2015-2019-period-click-here-for-fullscreen" class="level4 page-columns page-full" data-number="3.4.4">
+<h4 data-number="3.4.4" class="anchored" data-anchor-id="co-authorship-network-for-the-2015-2019-period-click-here-for-fullscreen"><span class="header-section-number">3.4.4</span> Co-authorship network for the 2015-2019 period (<a href="https://oliviercaron.github.io/systematic_lit_review/networks/authors/2015_2019_sigma_v2.html">click here for fullscreen</a>)</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>G_2015_2019, df_2015_2019 <span class="op">=</span> sigma_graph(list_articles, <span class="dv">2015</span>, <span class="dv">2019</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> nx.greedy_color(G_2015_2019, strategy<span class="op">=</span><span class="st">'largest_first'</span>, interchange<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>colorsdf <span class="op">=</span> pd.DataFrame.from_dict(colors, orient<span class="op">=</span><span class="st">'index'</span>, columns<span class="op">=</span>[<span class="st">'color'</span>])</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plot distribution of colors</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>colorsdf[<span class="st">'color'</span>].value_counts().plot(kind<span class="op">=</span><span class="st">'bar'</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>), rot<span class="op">=</span><span class="dv">0</span>, title<span class="op">=</span><span class="st">"Distribution of colors in the 2015-2019 network"</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#print("The density of the graph is {}".format(nx.density(G_2013_2017))</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>communities <span class="op">=</span> community_louvain.best_partition(G_2015_2019)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"There are </span><span class="sc">{}</span><span class="st"> communities in the 2015-2019 network"</span>.<span class="bu">format</span>(<span class="bu">len</span>(<span class="bu">set</span>(communities.values()))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<iframe width="1500" height="900" src="networks/authors/2015_2019_sigma_v2.html" title="Sigma graph" frameborder="0" class="column-page"></iframe>
+</section>
+<section id="co-authorship-network-for-the-2014-2019-period-click-here-for-fullscreen" class="level4 page-columns page-full" data-number="3.4.5">
+<h4 data-number="3.4.5" class="anchored" data-anchor-id="co-authorship-network-for-the-2014-2019-period-click-here-for-fullscreen"><span class="header-section-number">3.4.5</span> Co-authorship network for the 2014-2019 period (<a href="https://oliviercaron.github.io/systematic_lit_review/networks/authors/2014_2019_sigma_v2.html">click here for fullscreen</a>)</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>G_2014_2019, df_2014_2019 <span class="op">=</span> sigma_graph(list_articles, <span class="dv">2014</span>, <span class="dv">2019</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> nx.greedy_color(G_2014_2019, strategy<span class="op">=</span><span class="st">'largest_first'</span>, interchange<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>colorsdf <span class="op">=</span> pd.DataFrame.from_dict(colors, orient<span class="op">=</span><span class="st">'index'</span>, columns<span class="op">=</span>[<span class="st">'color'</span>])</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plot distribution of colors</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>colorsdf[<span class="st">'color'</span>].value_counts().plot(kind<span class="op">=</span><span class="st">'bar'</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>), rot<span class="op">=</span><span class="dv">0</span>, title<span class="op">=</span><span class="st">"Distribution of colors in the 2014-2019 network"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>communities <span class="op">=</span> community_louvain.best_partition(G_2014_2019)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"There are </span><span class="sc">{}</span><span class="st"> communities in the 2014-2019 network"</span>.<span class="bu">format</span>(<span class="bu">len</span>(<span class="bu">set</span>(communities.values()))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<iframe width="1500" height="900" src="networks/authors/2014_2019_sigma_v2.html" title="Sigma graph" frameborder="0" class="column-page"></iframe>
+</section>
+<section id="co-authorship-network-until-2015-click-here-for-fullscreen" class="level4 page-columns page-full" data-number="3.4.6">
+<h4 data-number="3.4.6" class="anchored" data-anchor-id="co-authorship-network-until-2015-click-here-for-fullscreen"><span class="header-section-number">3.4.6</span> Co-authorship network until 2015 (<a href="https://oliviercaron.github.io/systematic_lit_review/networks/authors/0_2015_sigma_v2.html">click here for fullscreen</a>)</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>G_0_2015, df_0_2015 <span class="op">=</span> sigma_graph(list_articles, <span class="dv">0</span>, <span class="dv">2015</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> nx.greedy_color(G_0_2015, strategy<span class="op">=</span><span class="st">'largest_first'</span>, interchange<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>colorsdf <span class="op">=</span> pd.DataFrame.from_dict(colors, orient<span class="op">=</span><span class="st">'index'</span>, columns<span class="op">=</span>[<span class="st">'color'</span>])</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plot distribution of colors</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>colorsdf[<span class="st">'color'</span>].value_counts().plot(kind<span class="op">=</span><span class="st">'bar'</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>), rot<span class="op">=</span><span class="dv">0</span>, title<span class="op">=</span><span class="st">"Distribution of colors in the 0-2015 network"</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>communities <span class="op">=</span> community_louvain.best_partition(G_0_2015)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"There are </span><span class="sc">{}</span><span class="st"> communities in the 0-2015 network"</span>.<span class="bu">format</span>(<span class="bu">len</span>(<span class="bu">set</span>(communities.values()))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<iframe width="1500" height="900" src="networks/authors/0_2015_sigma_v2.html" title="Sigma graph" frameborder="0" class="column-page"></iframe>
+</section>
+</section>
+<section id="an-interesting-metric-the-graph-density" class="level3" data-number="3.5">
+<h3 data-number="3.5" class="anchored" data-anchor-id="an-interesting-metric-the-graph-density"><span class="header-section-number">3.5</span> An interesting metric: the graph density</h3>
+<p>The graph density is the ratio of the number of edges to the maximum number of possible edges. It is a measure of the proportion of edges present in a graph. A graph with a high density has a large number of edges compared to the number of nodes. A graph with a low density has a small number of edges compared to the number of nodes.</p>
+<p>A more formal definition is given <a href="https://networkx.org/documentation/stable/reference/generated/networkx.classes.function.density.html">here</a> by the following formulas:</p>
+<ul>
+<li>For undirected graphs:</li>
+</ul>
+<p><span class="math display">\[
+\begin{equation}d=\frac{2 m}{n(n-1)}\end{equation}
+\]</span></p>
+<ul>
+<li>For directed graphs:</li>
+</ul>
+<p><span class="math display">\[
+\begin{equation}d=\frac{m}{n(n-1)}\end{equation}
+\]</span></p>
+<p>where <span class="math inline">\(n\)</span> is the number of nodes and <span class="math inline">\(m\)</span> is the number of edges in the graph.</p>
+<p>From an interpretation standpoint, we can appreciate the density in the graphs bellow as follows:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 91%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(d\)</span></th>
+<th style="text-align: left;"><strong>Interpretation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Close to <span class="math inline">\(0\)</span></td>
+<td style="text-align: left;"><ul>
+<li><p>The collaborative relationships among authors are sparse:</p></li>
+<li><p>Authors have limited connections with each other outside of their community.</p></li>
+<li><p>Scientific papers are primarily the work of individual authors or small isolated groups.</p></li>
+</ul></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Close to <span class="math inline">\(1\)</span></td>
+<td style="text-align: left;"><ul>
+<li><p>Authors frequently collaborate with one another, leading to a web of interconnected scientific collaborations.</p></li>
+<li><p>Scientific papers often involve contributions from multiple authors, reflecting a high level of teamwork and interdisciplinary research.</p></li>
+<li><p>Collaborations are a significant aspect of the research process in this marketing field, and authors actively seek out opportunities to work together.</p></li>
+<li><p>The network of collaborations is well-established and robust, facilitating the exchange of ideas and the advancement of scientific knowledge.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+<section id="evolution-of-the-graphs-density" class="level4" data-number="3.5.1">
+<h4 data-number="3.5.1" class="anchored" data-anchor-id="evolution-of-the-graphs-density"><span class="header-section-number">3.5.1</span> Evolution of the graphs’ density</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> average_degree(G):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the sum of degrees of all nodes</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    total_degree <span class="op">=</span> <span class="bu">sum</span>(<span class="bu">dict</span>(G.degree()).values())</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Divide by the number of nodes to get the average degree</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    avg_degree <span class="op">=</span> total_degree <span class="op">/</span> G.number_of_nodes()</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> avg_degree</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_density(G):</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(G.nodes()) <span class="op">==</span> <span class="dv">0</span>:  <span class="co"># Pour éviter une division par zéro</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">len</span>(G.edges()) <span class="op">/</span> <span class="bu">len</span>(G.nodes())</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataframe with the density of each graph</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co">#density_df = pd.DataFrame({</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">#'period': ['before-2013', '2013-2017', '2018-2021', '2022-2023'],</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">#'density': [</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nx.density(G_before_2013),</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nx.density(G_2013_2017),</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nx.density(G_2018_2021),</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nx.density(G_2022_2023)</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>      <span class="co">#],</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">#'average_degree': [</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>        <span class="co">#average_degree(G_before_2013),</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>        <span class="co">#average_degree(G_2013_2017),</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>        <span class="co">#average_degree(G_2018_2021),</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>        <span class="co">#average_degree(G_2022_2023)</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>    <span class="co">#],</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    <span class="co">#'linear_density': [</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>        <span class="co">#linear_density(G_before_2013),</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>        <span class="co">#linear_density(G_2013_2017),</span></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>        <span class="co">#linear_density(G_2018_2021),</span></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>        <span class="co">#linear_density(G_2022_2023)</span></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">#]</span></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a><span class="co">#})</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(Hmisc)</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the 'density_df' dataframe from Python using reticulate</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#testtransfer &lt;- py$density_df</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the order of categories for the 'period' column</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#testtransfer$period &lt;- factor(testtransfer$period, levels = c('before-2013', '2013-2017', '2018-2021', '2022-2023'))</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the 'gt()' function to display the dataframe</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co">#testtransfer %&gt;%</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#rename_all(Hmisc::capitalize) %&gt;%</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#gt() %&gt;%</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#tab_style(</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">#style = cell_text(weight = "bold", align = "center"),</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">#locations = cells_column_labels()</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">#)</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the Plotly graph</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="co">#fig &lt;- plot_ly(testtransfer, x = ~period, y = ~density, type = 'scatter', mode = 'lines+markers', </span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>               <span class="co">#text = ~paste("Period=", period, "&lt;br&gt;Density=", density), hoverinfo = "text")</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the graph</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="co">#fig &lt;- fig %&gt;% layout(template = "plotly_white")</span></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="co">#fig</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="graph-density-of-references" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="graph-density-of-references"><span class="header-section-number">4</span> Graph density of references</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataframe with the density of each graph</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#density_df_references = pd.DataFrame({</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#'period': ['before-2013', '2013-2017', '2018-2021', '2022-2023', 'overall'],</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#'density': [</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">#nx.density(G_before_2013_references), </span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">#nx.density(G_2013_2017_references), </span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">#nx.density(G_2018_2021_references), </span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">#nx.density(G_2022_2023_references),</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">#nx.density(G_overall_references)</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#],</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">#'average_degree': [</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>        <span class="co">#average_degree(G_before_2013_references),</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">#average_degree(G_2013_2017_references),</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>        <span class="co">#average_degree(G_2018_2021_references),</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>        <span class="co">#average_degree(G_2022_2023_references),</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">#average_degree(G_overall_references)</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">#],</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">#'linear_density': [</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">#linear_density(G_before_2013_references),</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">#linear_density(G_2013_2017_references),</span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#linear_density(G_2018_2021_references),</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">#linear_density(G_2022_2023_references),</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">#linear_density(G_overall_references)</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">#]</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a><span class="co">#})</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: citations-graph-density-comparison</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig.cap: Comparison of network densities and average degree of nodes over time</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="in">#| column: body-outset</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="in"># Density plot</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="in">density_plot &lt;- ggplot() +</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_line(data = py$density_df, aes(x = period, y = density, colour = "Collaboration Density", group=1, text = paste("Period:", period, "&lt;br&gt;Density:", density)), linewidth=1) +</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_line(data = py$density_df_references %&gt;% filter(period != "overall"), aes(x = period, y = density, colour = "References Density", group=1, text = paste("Period:", period, "&lt;br&gt;Density:", density)), linewidth=1) +</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_y_continuous(name = "Graphs Density") +</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_x_discrete(limits = c("before-2013", "2013-2017", "2018-2021", "2022-2023")) +</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="in">  xlab("Period") +</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="in">  ggtitle("Comparison of Network Density Over Time") +</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="in">  theme_minimal()</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="in"># Linear density plot (m/n)</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="in">linear_density_plot &lt;- ggplot() +</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_line(data = py$density_df, aes(x = period, y = linear_density, colour = "Collaboration Linear Density", group=1, text = paste("Period:", period, "&lt;br&gt;Linear Density:", linear_density)), linewidth=1) + # Adjusted for the new column "linear_density"</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_line(data = py$density_df_references %&gt;% filter(period != "overall"), aes(x = period, y = linear_density, colour = "References Linear Density", group=1, text = paste("Period:", period, "&lt;br&gt;Linear Density:", linear_density)), linewidth=1) + # Adjusted for the new column "linear_density"</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_y_continuous(name = "Graphs Linear Density") +</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_x_discrete(limits = c("before-2013", "2013-2017", "2018-2021", "2022-2023")) +</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="in">  xlab("Period") +</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="in">  ggtitle("Comparison of Network Linear Density Over Time") +</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="in">  theme_minimal()</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="in"># Create average degree plot</span></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="in">avg_degree_plot &lt;- ggplot() +</span></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_line(data = py$density_df, aes(x = period, y = average_degree, colour = "Collaboration Average Degree", group=1, text = paste("Period:", period, "&lt;br&gt;Average Degree:", average_degree)), linewidth=1) + # Corrected here</span></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_line(data = py$density_df_references %&gt;% filter(period != "overall"), aes(x = period, y = average_degree, colour = "References Average Degree", group=1, text = paste("Period:", period, "&lt;br&gt;Average Degree:", average_degree)), linewidth=1) +</span></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_y_continuous(name = "Nodes Average Degree") +</span></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_x_discrete(limits = c("before-2013", "2013-2017", "2018-2021", "2022-2023")) +</span></span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a><span class="in">  xlab("Period") +</span></span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a><span class="in">  ggtitle("Comparison of Network Average Degree Over Time") +</span></span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a><span class="in">  theme_minimal()</span></span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a><span class="in"># Combine density and average degree plots</span></span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a><span class="in">density_plot / linear_density_plot / avg_degree_plot</span></span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a><span class="in">ggsave("images/citations-graph-density-comparison.png", width=270, height=180, units="cm", dpi=300)</span></span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/dylanshang\.github\.io\/quarto-graph-experiments");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../docs/notebooks/mesonetwork.html" class="pagination-link" aria-label="Réseau entre les citations des avis du CCNE">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Réseau entre les citations des avis du CCNE</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/analect/quarto-graph-experiments/edit/main/docs/notebooks/networks_author.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/analect/quarto-graph-experiments/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
