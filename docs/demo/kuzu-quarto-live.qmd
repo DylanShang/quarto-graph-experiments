@@ -115,6 +115,8 @@ display(g)
 
 ### Try to Connect to a pre-existing `kuzu-test` database
 
+This is not going to work for now. From [here](https://github.com/DylanShang/kuzu-lab/issues/1#issuecomment-2324497892), it seems that the pyodide VFS (virtual file system) is different to that of the Kuzu VFS.
+
 ```{pyodide}
 #| autorun: false
 #| completion: true
@@ -182,3 +184,97 @@ get_as_df
 ```
 
 Which would suggest a connection is not being made to the kuzu database.
+
+
+### Try `ATTACH` to external kuzu DB
+
+Turns out `httpfs` is [not supported](https://github.com/DylanShang/kuzu-lab/issues/1#issuecomment-2324785334) yet in this version of kuzu-wasm.
+
+```{pyodide}
+#| autorun: false
+#| completion: true
+
+import networkx as nx,pandas as pd,pyarrow as pa,kuzu_wasm,js
+from pyvis.network import Network
+from kuzu_wasm.utils import *
+
+# init Kuzu database
+kuzu = await kuzu_wasm.init("https://analect.github.io/quarto-graph-experiments/package/kuzu-wasm/kuzu.js")
+db = await kuzu.Database("./test-github")
+conn = await kuzu.Connection(db)
+
+# create schema and import data
+await conn.execute("INSTALL httpfs;")
+await conn.execute("LOAD EXTENSION httpfs;")
+await conn.execute("CALL HTTP_CACHE_FILE=TRUE;")
+await conn.execute("ATTACH "https://raw.githubusercontent.com/analect/quarto-graph-experiments/gh-pages/data/kuzu-test" AS meta (dbtype kuzu);")
+db_check = await conn.execute("CALL SHOW_ATTACHED_DATABASES() RETURN *;")
+print(db_check)
+res = await conn.execute("MATCH (a:Document)-[f:authored_by]->(b:Author) RETURN a.Title,f,b.Author;")
+print(res)
+await conn.execute("DETACH meta;")
+```
+
+
+### Regenerate Kuzu database in Kuzu VFS
+
+Let's try to emulate our `load_data_kuzu.py` script within the cell below, so that we end up re-creating a kuzu database that we can connect to.
+
+```{pyodide}
+#| autorun: false
+#| completion: true
+
+import networkx as nx,pandas as pd,pyarrow as pa,kuzu_wasm,js
+from pyvis.network import Network
+from kuzu_wasm.utils import *
+
+# init Kuzu database
+kuzu = await kuzu_wasm.init("https://analect.github.io/quarto-graph-experiments/package/kuzu-wasm/kuzu.js")
+db = await kuzu.Database()
+conn = await kuzu.Connection(db)
+
+# get remote csv to wasm filesystem
+kuzu.FS.writeFile("/core_meta-data.csv", await (await js.fetch("https://raw.githubusercontent.com/Analect/quarto-graph-experiments/gh-pages/data/core_meta-data.csv")).text())
+kuzu.FS.writeFile("/categories_meta-data.csv", await (await js.fetch("https://raw.githubusercontent.com/Analect/quarto-graph-experiments/gh-pages/data/categories_meta-data.csv")).text())
+kuzu.FS.writeFile("/author_meta-data.csv", await (await js.fetch("https://raw.githubusercontent.com/Analect/quarto-graph-experiments/gh-pages/data/author_meta-data.csv")).text())
+kuzu.FS.writeFile("/source_meta-data.csv", await (await js.fetch("https://raw.githubusercontent.com/Analect/quarto-graph-experiments/gh-pages/data/source_meta-data.csv")).text())
+kuzu.FS.writeFile("/unique_categories.csv", await (await js.fetch("https://raw.githubusercontent.com/Analect/quarto-graph-experiments/gh-pages/data/unique_categories.csv")).text())
+kuzu.FS.writeFile("/unique_author.csv", await (await js.fetch("https://raw.githubusercontent.com/Analect/quarto-graph-experiments/gh-pages/data/unique_author.csv")).text())
+kuzu.FS.writeFile("/unique_source.csv", await (await js.fetch("https://raw.githubusercontent.com/Analect/quarto-graph-experiments/gh-pages/data/unique_source.csv")).text())
+
+
+# create node table schemas and import data
+await conn.execute("CREATE NODE TABLE Document(FileIndex STRING, DocSite STRING, FileName STRING, URL STRING, Title STRING, Description STRING, Author STRING, Categories STRING, Date STRING, PRIMARY KEY (FileIndex))")
+await conn.execute("CREATE NODE TABLE Category(Category STRING, PRIMARY KEY (Category))")
+await conn.execute("CREATE NODE TABLE Author(Author STRING, PRIMARY KEY (Author))")
+await conn.execute("CREATE NODE TABLE Source(LinkURL STRING, PRIMARY KEY (LinkURL))")
+await conn.execute("COPY Document FROM './core_meta-data.csv';")
+await conn.execute("COPY Category FROM './unique_categories.csv';")
+await conn.execute("COPY Author FROM './unique_author.csv';")
+await conn.execute("COPY LivesIn FROM './unique_source.csv';")
+print("Loaded nodes into KùzuDB")
+
+# create edge table schemas and import data
+await conn.execute("CREATE REL TABLE has_category(FROM Document TO Category)")
+await conn.execute("CREATE REL TABLE authored_by(FROM Document TO Author)")
+await conn.execute("CREATE REL TABLE has_source(FROM Document TO Source, sourceName STRING)")
+await conn.execute("COPY has_category FROM './categories_meta-data.csv';")
+await conn.execute("COPY authored_by FROM './author_meta-data.csv';")
+await conn.execute("COPY has_source FROM './source_meta-data.csv';")
+print("Loaded edges into KùzuDB")
+
+#cypher query
+res = await conn.execute("MATCH (a:Document)-[f:authored_by]->(b:Author) RETURN a,f,b;")
+print(res)
+
+# display the graph
+G = toNetworkx(res,directed = True)
+g = Network(height="480px",notebook=True, cdn_resources='remote',directed = True,neighborhood_highlight = True)
+g.from_nx(G)
+
+# change the display name
+for i in range(len(g.nodes)): g.nodes[i]["label"] = g.nodes[i]["_LABEL"]
+
+def display(g, width="100%", height="500px"): print(f'<iframe srcdoc="{g.generate_html(notebook=True).replace(chr(34), "&quot;").replace(chr(39), "&#39;")}" style="width: {width}; height: {height}; border: none;"></iframe>')
+display(g)
+```
