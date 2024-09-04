@@ -1,1 +1,9 @@
 # quarto-graph-experiments
+
+Experimentation around using an embedded Kuzu graph database to enhance a documentation site.  This is leveraging work from [DylanShang/kuzu-wasm](https://github.com/DylanShang/kuzu-wasm). A WebAssembly version is not officially supported by the Kuzu team, as yet.
+
+I'm most interested in getting this working in the context of [quarto-live](https://github.com/r-wasm/quarto-live). The main experimentation document is [docs/demo/kuzu-quarto-live.qmd](https://github.com/Analect/quarto-graph-experiments/blob/main/docs/demo/kuzu-quarto-live.qmd), which gets rendered as [docs/demo/kuzu-quarto-live.html](https://analect.github.io/quarto-graph-experiments/docs/demo/kuzu-quarto-live.html).
+
+This has a basic meta-data scraping and kuzu graph-loading script under [scripts](https://github.com/Analect/quarto-graph-experiments/tree/main/scripts). These run as pre-rendering jobs in quarto, as specified [here](https://github.com/Analect/quarto-graph-experiments/blob/main/_quarto.yml#L8-L9). The various component CSVs and resulting kuzu database get created in a `data` folder and are pushed as part of the rendered artifacts [here](https://github.com/Analect/quarto-graph-experiments/blob/main/_quarto.yml#L4). For that corresponding data folder to be available in pyodide, you need to include a [resources](https://github.com/Analect/quarto-graph-experiments/blob/main/docs/demo/kuzu-quarto-live.qmd#L13) reference in the `kuzu-quarto-live.qmd` file.
+
+I was then trying to connect from a pyodide cell to the generated kuzu database, but it seems that these are alternate virtual file-systems that can't interact with eachother, so for now, I regenerated the simple kuzu database in the pyodide cell directly, per [here](https://github.com/Analect/quarto-graph-experiments/blob/main/docs/demo/kuzu-quarto-live.qmd#L219-L279).
