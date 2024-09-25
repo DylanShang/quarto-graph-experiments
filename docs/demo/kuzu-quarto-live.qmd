@@ -9,8 +9,6 @@ author: "Analect"
 date: 2024-08-22
 format: live-html
 pyodide:
-  resources:
-    - "../../data/"
   packages:
     - numpy
     - pandas
@@ -126,8 +124,7 @@ from pyvis.network import Network
 from kuzu_wasm.utils import *
 import shutil
 
-db_path = './data/kuzu-test'
-shutil.rmtree(db_path, ignore_errors=True)
+db_path = '/kuzu-test'
 
 # init Kuzu database
 kuzu = await kuzu_wasm.init("https://dylanshang.github.io/quarto-graph-experiments/package/kuzu-wasm/kuzu-browser.js")
@@ -136,22 +133,24 @@ conn = await kuzu.Connection(db)
 
 #cypher query
 #response = await conn.execute("MATCH (a:Document)-[f:authored_by]->(b:Author) RETURN a.Title,f,b.Author;")
-#response = await conn.execute("MATCH (a:Document)-[f:authored_by]->(b:Author) RETURN a,f,b;")
-#response = await conn.execute("MATCH (n)-[r]->(m) RETURN n,r,m;")
-res = await conn.execute("CALL SHOW_TABLES() RETURN *;")
+response = await conn.execute("MATCH (a:Document)-[f:authored_by]->(b:Author) RETURN a,f,b;")
+# response = await conn.execute("MATCH (n)-[r]->(m) RETURN n,r,m;")
+# res = await conn.execute("CALL SHOW_TABLES() RETURN *;")
 
-print(db_path)
-print(res)
-print(res.get_as_df())
-
-# display the graph
-G = toNetworkx(res,directed = True)
+G = toNetworkx(response,directed = True)
 g = Network(height="480px",notebook=True, cdn_resources='remote',directed = True,neighborhood_highlight = True)
 g.from_nx(G)
 
+# print(g.nodes)
 # change the display name
-for i in range(len(g.nodes)): g.nodes[i]["label"] = g.nodes[i]["name"]
-
+for i in range(len(g.nodes)): 
+  if g.nodes[i]["_LABEL"] == "Author":
+    g.nodes[i]["label"] = g.nodes[i]["Author"]
+  elif g.nodes[i]["_LABEL"] == "Document":
+    g.nodes[i]["label"] = g.nodes[i]["FileName"]
+    # Add hyperlink
+    g.nodes[i]["title"] = f"""<a href="{g.nodes[i]["URL"]}" target="_blank">{g.nodes[i]["URL"]}</a>"""
+    
 def display(g, width="100%", height="500px"): print(f'<iframe srcdoc="{g.generate_html(notebook=True).replace(chr(34), "&quot;").replace(chr(39), "&#39;")}" style="width: {width}; height: {height}; border: none;"></iframe>')
 display(g)
 ```
