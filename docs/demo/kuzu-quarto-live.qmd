@@ -17,8 +17,8 @@ pyodide:
     - networkx
     - pyvis
     - pyodide_unix_timezones
-    - https://analect.github.io/quarto-graph-experiments/package/wheels/pyarrow-17.0.0-cp312-cp312-pyodide_2024_0_wasm32.whl
-    - kuzu_wasm==0.0.7
+    - https://dylanshang.github.io/quarto-graph-experiments/package/wheels/pyarrow-17.0.0-cp312-cp312-pyodide_2024_0_wasm32.whl
+    - kuzu_wasm
 ---
 
 
@@ -77,7 +77,7 @@ from pyvis.network import Network
 from kuzu_wasm.utils import *
 
 # init Kuzu database
-kuzu = await kuzu_wasm.init("https://analect.github.io/quarto-graph-experiments/package/kuzu-wasm/kuzu.js")
+kuzu = await kuzu_wasm.init("https://dylanshang.github.io/quarto-graph-experiments/package/kuzu-wasm/kuzu-browser.js")
 db = await kuzu.Database()
 conn = await kuzu.Connection(db)
 
@@ -130,7 +130,7 @@ db_path = './data/kuzu-test'
 shutil.rmtree(db_path, ignore_errors=True)
 
 # init Kuzu database
-kuzu = await kuzu_wasm.init("https://analect.github.io/quarto-graph-experiments/package/kuzu-wasm/kuzu.js")
+kuzu = await kuzu_wasm.init("https://dylanshang.github.io/quarto-graph-experiments/package/kuzu-wasm/kuzu-browser.js")
 db = await kuzu.Database(db_path)
 conn = await kuzu.Connection(db)
 
@@ -199,7 +199,7 @@ from pyvis.network import Network
 from kuzu_wasm.utils import *
 
 # init Kuzu database
-kuzu = await kuzu_wasm.init("https://analect.github.io/quarto-graph-experiments/package/kuzu-wasm/kuzu.js")
+kuzu = await kuzu_wasm.init("https://dylanshang.github.io/quarto-graph-experiments/package/kuzu-wasm/kuzu-browser.js")
 db = await kuzu.Database("./test-github")
 conn = await kuzu.Connection(db)
 
@@ -229,7 +229,7 @@ from pyvis.network import Network
 from kuzu_wasm.utils import *
 
 # init Kuzu database
-kuzu = await kuzu_wasm.init("https://analect.github.io/quarto-graph-experiments/package/kuzu-wasm/kuzu.js")
+kuzu = await kuzu_wasm.init("https://dylanshang.github.io/quarto-graph-experiments/package/kuzu-wasm/kuzu-browser.js")
 db = await kuzu.Database()
 conn = await kuzu.Connection(db)
 

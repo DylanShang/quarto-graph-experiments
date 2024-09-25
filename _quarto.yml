@@ -4,9 +4,6 @@ project:
     - "data/**/*"
     - "package/**/*"
     - "coi-serviceworker.min.js"
-  pre-render:
-    - scripts/metadata-scrape.py
-    - scripts/load_data_kuzu.py
   render:
     - "*.qmd"
     - docs/**/*.qmd
@@ -22,7 +19,7 @@ execute:
 website:
   title: "Quarto Graph Experiments"
   open-graph: true
-  site-url: "https://analect.github.io/quarto-graph-experiments"
+  site-url: "https://dylanshang.github.io/quarto-graph-experiments"
   repo-url: "https://github.com/analect/quarto-graph-experiments"
   repo-actions: [edit, issue]
   page-navigation: true

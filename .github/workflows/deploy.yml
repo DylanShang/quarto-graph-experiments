@@ -18,11 +18,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-            node-version: '18.x'
-            registry-url: 'https://registry.npmjs.org'
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         env:
@@ -40,22 +35,17 @@ jobs:
       - name: Install the dependencies
         run: |
           python -m pip install -r requirements.txt
-      # - name: Build the JupyterLite site
-      #   run: |
-      #     cp README.md content
-      #     jupyter lite build --contents content --output-dir dist
-      #     cp deploy/netlify.toml dist
-      # - name: Download kuzu-wasm
-      #   run: |
-      #     npm view @kuzu/kuzu-wasm dist.tarball | xargs curl -o dist/package.tgz
-      #     tar -xz -C dist -f dist/package.tgz && rm dist/package.tgz
-      # - name: Download kuzu-wasm
-      #   run: |
-      #     npm view coi-serviceworker dist.tarball | xargs curl -o dist/package.tgz
-      #     tar -xz -C dist -f dist/package.tgz && rm dist/package.tgz
-      # - name: get wheels for public
-      #   run: |
-      #     cp -R deploy/wheels dist    
+      - name : Run python scripts and build kuzu db
+        run: |
+          python3 scripts/metadata-scrape.py
+          python3 scripts/load_data_kuzu.py
+      - name : Build kuzu-wasm with local db
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}/package/kuzu-wasm:/kuzu-wasm/packages/kuzu-wasm/dist \
+            -v ${{ github.workspace }}/data:/kuzu-wasm/data/embeddings \
+            dylanshang/kuzu-wasm \
+            /bin/bash -c "make package"
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/publish@v2
         with:
@@ -63,36 +53,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: dist
-#           path: docs
-#       - name: Upload Artifact
-#         uses: actions/upload-pages-artifact@v3
-#         with:
-#           path: docs/_site
-#   deploy:
-#     runs-on: ubuntu-latest
-#     needs: build
-#     permissions:
-#       pages: write
-#       id-token: write
-#     environment:
-#       name: github-pages
-#       url: ${{ steps.deployment.outputs.page_url }}
-#     steps:
-#       - name: Deploy to GitHub Pages
-#         id: deployment
-#         uses: actions/deploy-pages@v4
-    #   - name: Deploy to Netlify
-    #     uses: nwtgck/actions-netlify@v3.0
-    #     with:
-    #       publish-dir: './dist'
-    #       production-branch: master
-    #       github-token: ${{ secrets.GITHUB_TOKEN }}
-    #       deploy-message: "Deploy from GitHub Actions"
-    #       enable-pull-request-comment: false
-    #       enable-commit-comment: true
-    #       overwrites-pull-request-comment: true
-    #       enable-github-deployment: false
-    #     env:
-    #       NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-    #       NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-    #     timeout-minutes: 10
