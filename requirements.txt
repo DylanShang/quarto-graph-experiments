@@ -1,7 +1,7 @@
 pandas
 numpy
 pyyaml
-kuzu==0.6.0
+kuzu==0.6.1.dev42
 polars
 jupyter
 nbformat
