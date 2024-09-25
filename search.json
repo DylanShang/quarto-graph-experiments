@@ -50,13 +50,53 @@
     ]
   },
   {
-    "objectID": "docs/demo/kuzu-quarto-live.html",
-    "href": "docs/demo/kuzu-quarto-live.html",
-    "title": "Quarto graph experiment - DylanShang version",
+    "objectID": "docs/notebooks/mesonetwork.html",
+    "href": "docs/notebooks/mesonetwork.html",
+    "title": "Réseau entre les citations des avis du CCNE",
     "section": "",
-    "text": "What is in the data folder?\n\n\n\n\n\n\n\n\nGenerate self-contained graph\n\n\n\n\n\n\n\n\nTry to Connect to a pre-existing kuzu-test database\n\n\n\n\n\n\nWould expect to get returned something like:\n┌──────────────┬────────┬───────────────┬─────────┐\n│ name         │ type   │ database name │ comment │\n│ STRING       │ STRING │ STRING        │ STRING  │\n├──────────────┼────────┼───────────────┼─────────┤\n│ has_source   │ REL    │ local(kuzu)   │         │\n│ has_category │ REL    │ local(kuzu)   │         │\n│ Author       │ NODE   │ local(kuzu)   │         │\n│ Category     │ NODE   │ local(kuzu)   │         │\n│ authored_by  │ REL    │ local(kuzu)   │         │\n│ Source       │ NODE   │ local(kuzu)   │         │\n│ Document     │ NODE   │ local(kuzu)   │         │\n└──────────────┴────────┴───────────────┴─────────┘\nInstead, I’m getting back this:\n./data/kuzu-test\nname|type|database name|comment\n\nget_as_df\nWhich would suggest a connection is not being made to the kuzu database.",
+    "text": "Si l’application ne fonctionne pas directement sur ce site, veuillez utiliser :\nRéseau entre les citations, en application standalone",
     "crumbs": [
-      "Quarto graph experiment - DylanShang version"
+      "Réseau entre les citations des avis du CCNE"
+    ]
+  },
+  {
+    "objectID": "docs/notebooks/mesonetwork.html#sélectionnez-un-président-pour-avoir-les-avis-publiés-sous-sa-présidence",
+    "href": "docs/notebooks/mesonetwork.html#sélectionnez-un-président-pour-avoir-les-avis-publiés-sous-sa-présidence",
+    "title": "Réseau entre les citations des avis du CCNE",
+    "section": "Sélectionnez un président pour avoir les avis publiés sous sa présidence",
+    "text": "Sélectionnez un président pour avoir les avis publiés sous sa présidence\nQuand le choix est changé, l’intervalle des avis séléctionné est mis à jour.\n\nviewof president = Inputs.radio([\"Bernard (83-91)\", \"Changeux (92-99)\", \"Sicard (00-08)\", \"Grimfeld (09-11)\", \"Ameisen (12-15)\", \"Delfraissy (16-)\"], {\n  label: \"Présent\",\n  value: \"Delfraissy (16-)\"\n})",
+    "crumbs": [
+      "Réseau entre les citations des avis du CCNE"
+    ]
+  },
+  {
+    "objectID": "docs/notebooks/mesonetwork.html#sélectionner-lintervalle-des-avis-à-afficher-par-numéro-de-publication-dans-lordre-chronologique",
+    "href": "docs/notebooks/mesonetwork.html#sélectionner-lintervalle-des-avis-à-afficher-par-numéro-de-publication-dans-lordre-chronologique",
+    "title": "Réseau entre les citations des avis du CCNE",
+    "section": "Sélectionner l’intervalle des avis à afficher (par numéro de publication, dans l’ordre chronologique):",
+    "text": "Sélectionner l’intervalle des avis à afficher (par numéro de publication, dans l’ordre chronologique):\n\npresident_data = await d3.json(\"data/max_min_par_president.json\");\n\n// Trouver la plage correspondant au président sélectionné\nselected_president_data = president_data.find(d =&gt; d.president === president);\n\n// Définir la plage des avis en fonction du président sélectionné\nimport {interval} from '@mootari/range-slider'\nviewof avis_range = interval([1, 144], {\n  step: 1,\n  value: [selected_president_data.avis_min, selected_president_data.avis_max],\n  label: \"Plage avis\",\n})",
+    "crumbs": [
+      "Réseau entre les citations des avis du CCNE"
+    ]
+  },
+  {
+    "objectID": "docs/notebooks/mesonetwork.html#choisir-les-catégories-à-afficher",
+    "href": "docs/notebooks/mesonetwork.html#choisir-les-catégories-à-afficher",
+    "title": "Réseau entre les citations des avis du CCNE",
+    "section": "Choisir les catégories à afficher",
+    "text": "Choisir les catégories à afficher\n\nlist_all_categories = [\"Auteurs\",\"Autorités\",\"CCNE\",\"Comité d'éthique\",\"Comparaison pays\",\"Etat\",\"Forums\",\"Loi\",\"Org Internationales\",\"Presse\", \"Science, littérature\",\"Société\"];\nviewof categories = Inputs.checkbox(\n  list_all_categories, \n  {label: \"Catégories\", value: [\"Loi\", \"CCNE\"]}\n);",
+    "crumbs": [
+      "Réseau entre les citations des avis du CCNE"
+    ]
+  },
+  {
+    "objectID": "docs/notebooks/mesonetwork.html#afficher-ou-cacher-le-réseau",
+    "href": "docs/notebooks/mesonetwork.html#afficher-ou-cacher-le-réseau",
+    "title": "Réseau entre les citations des avis du CCNE",
+    "section": "Afficher ou cacher le réseau",
+    "text": "Afficher ou cacher le réseau\n\n// Afficher ou cacher le réseau\nviewof toggle_network = Inputs.toggle({label: \"Afficher le réseau\", value: true});",
+    "crumbs": [
+      "Réseau entre les citations des avis du CCNE"
     ]
   },
   {
@@ -160,53 +200,13 @@
     ]
   },
   {
-    "objectID": "docs/notebooks/mesonetwork.html",
-    "href": "docs/notebooks/mesonetwork.html",
-    "title": "Réseau entre les citations des avis du CCNE",
+    "objectID": "docs/demo/kuzu-quarto-live.html",
+    "href": "docs/demo/kuzu-quarto-live.html",
+    "title": "Quarto graph experiment - DylanShang version",
     "section": "",
-    "text": "Si l’application ne fonctionne pas directement sur ce site, veuillez utiliser :\nRéseau entre les citations, en application standalone",
+    "text": "What is in the data folder?\n\n\n\n\n\n\n\n\nGenerate self-contained graph\n\n\n\n\n\n\n\n\nTry to Connect to a pre-existing kuzu-test database\nThis is not going to work for now. From here, it seems that the pyodide VFS (virtual file system) is different to that of the Kuzu VFS.\n\n\n\n\n\n\nWould expect to get returned something like:\n┌──────────────┬────────┬───────────────┬─────────┐\n│ name         │ type   │ database name │ comment │\n│ STRING       │ STRING │ STRING        │ STRING  │\n├──────────────┼────────┼───────────────┼─────────┤\n│ has_source   │ REL    │ local(kuzu)   │         │\n│ has_category │ REL    │ local(kuzu)   │         │\n│ Author       │ NODE   │ local(kuzu)   │         │\n│ Category     │ NODE   │ local(kuzu)   │         │\n│ authored_by  │ REL    │ local(kuzu)   │         │\n│ Source       │ NODE   │ local(kuzu)   │         │\n│ Document     │ NODE   │ local(kuzu)   │         │\n└──────────────┴────────┴───────────────┴─────────┘\nInstead, I’m getting back this:\n./data/kuzu-test\nname|type|database name|comment\n\nget_as_df\nWhich would suggest a connection is not being made to the kuzu database.\n\n\nTry ATTACH to external kuzu DB\nTurns out httpfs is not supported yet in this version of kuzu-wasm.\n\n\n\n\n\n\n\n\nRegenerate Kuzu database in Kuzu VFS\nLet’s try to emulate our load_data_kuzu.py script within the cell below, so that we end up re-creating a kuzu database that we can connect to.",
     "crumbs": [
-      "Réseau entre les citations des avis du CCNE"
-    ]
-  },
-  {
-    "objectID": "docs/notebooks/mesonetwork.html#sélectionnez-un-président-pour-avoir-les-avis-publiés-sous-sa-présidence",
-    "href": "docs/notebooks/mesonetwork.html#sélectionnez-un-président-pour-avoir-les-avis-publiés-sous-sa-présidence",
-    "title": "Réseau entre les citations des avis du CCNE",
-    "section": "Sélectionnez un président pour avoir les avis publiés sous sa présidence",
-    "text": "Sélectionnez un président pour avoir les avis publiés sous sa présidence\nQuand le choix est changé, l’intervalle des avis séléctionné est mis à jour.\n\nviewof president = Inputs.radio([\"Bernard (83-91)\", \"Changeux (92-99)\", \"Sicard (00-08)\", \"Grimfeld (09-11)\", \"Ameisen (12-15)\", \"Delfraissy (16-)\"], {\n  label: \"Présent\",\n  value: \"Delfraissy (16-)\"\n})",
-    "crumbs": [
-      "Réseau entre les citations des avis du CCNE"
-    ]
-  },
-  {
-    "objectID": "docs/notebooks/mesonetwork.html#sélectionner-lintervalle-des-avis-à-afficher-par-numéro-de-publication-dans-lordre-chronologique",
-    "href": "docs/notebooks/mesonetwork.html#sélectionner-lintervalle-des-avis-à-afficher-par-numéro-de-publication-dans-lordre-chronologique",
-    "title": "Réseau entre les citations des avis du CCNE",
-    "section": "Sélectionner l’intervalle des avis à afficher (par numéro de publication, dans l’ordre chronologique):",
-    "text": "Sélectionner l’intervalle des avis à afficher (par numéro de publication, dans l’ordre chronologique):\n\npresident_data = await d3.json(\"data/max_min_par_president.json\");\n\n// Trouver la plage correspondant au président sélectionné\nselected_president_data = president_data.find(d =&gt; d.president === president);\n\n// Définir la plage des avis en fonction du président sélectionné\nimport {interval} from '@mootari/range-slider'\nviewof avis_range = interval([1, 144], {\n  step: 1,\n  value: [selected_president_data.avis_min, selected_president_data.avis_max],\n  label: \"Plage avis\",\n})",
-    "crumbs": [
-      "Réseau entre les citations des avis du CCNE"
-    ]
-  },
-  {
-    "objectID": "docs/notebooks/mesonetwork.html#choisir-les-catégories-à-afficher",
-    "href": "docs/notebooks/mesonetwork.html#choisir-les-catégories-à-afficher",
-    "title": "Réseau entre les citations des avis du CCNE",
-    "section": "Choisir les catégories à afficher",
-    "text": "Choisir les catégories à afficher\n\nlist_all_categories = [\"Auteurs\",\"Autorités\",\"CCNE\",\"Comité d'éthique\",\"Comparaison pays\",\"Etat\",\"Forums\",\"Loi\",\"Org Internationales\",\"Presse\", \"Science, littérature\",\"Société\"];\nviewof categories = Inputs.checkbox(\n  list_all_categories, \n  {label: \"Catégories\", value: [\"Loi\", \"CCNE\"]}\n);",
-    "crumbs": [
-      "Réseau entre les citations des avis du CCNE"
-    ]
-  },
-  {
-    "objectID": "docs/notebooks/mesonetwork.html#afficher-ou-cacher-le-réseau",
-    "href": "docs/notebooks/mesonetwork.html#afficher-ou-cacher-le-réseau",
-    "title": "Réseau entre les citations des avis du CCNE",
-    "section": "Afficher ou cacher le réseau",
-    "text": "Afficher ou cacher le réseau\n\n// Afficher ou cacher le réseau\nviewof toggle_network = Inputs.toggle({label: \"Afficher le réseau\", value: true});",
-    "crumbs": [
-      "Réseau entre les citations des avis du CCNE"
+      "Quarto graph experiment - DylanShang version"
     ]
   }
 ]
